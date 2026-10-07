@@ -1,0 +1,22 @@
+
+gameevent startup{
+    declare global Gmaxdashes: num=1;
+    declare global Gmaxstamina: num=110;
+}
+
+
+playerevent join{
+    declare global "%uuid":p=p(Gmaxdashes,Gmaxstamina);
+}
+
+playerevent leftClick{
+    global "%uuid".dash();
+}
+
+playerevent exhaustion{
+    event.cancel();
+}
+
+playerevent takeDamage{
+    event.cancel();
+}

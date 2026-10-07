@@ -1,0 +1,26 @@
+type p:{
+    maxdashes:num,
+    dashes:num,
+    maxstamina:num,
+    stamina:num,
+    state:str
+};
+
+extend p{
+    function constructor(maxdashes:num,maxstamina:num): p {
+
+        line plr = {
+            maxdashes:maxdashes,
+            dashes:maxdashes,
+            maxstamina:maxstamina,
+            stamina:maxstamina,
+            state:"normal"
+        } as p;
+
+        return plr;
+    }
+
+    function dash(){
+        default.launchForward(10, addToCurrentVel="False");
+    }
+}
