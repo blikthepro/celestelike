@@ -1,0 +1,10 @@
+process Gloop{
+    repeat{
+        wait(1);
+        for (line Pname of game.plotPlayerNames){
+            select playersByName(Pname);
+            call Ploop();
+        }
+        select reset();
+    }
+}

@@ -23,4 +23,8 @@ extend p{
     function dash(){
         default.launchForward(10, addToCurrentVel="False");
     }
+
+    function filteredRegen(this: p): p{
+       
+    }
 }
