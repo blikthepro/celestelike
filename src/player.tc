@@ -1,4 +1,5 @@
-type p:{
+type plr:{
+    name:str,
     maxdashes:num,
     dashes:num,
     maxstamina:num,
@@ -6,25 +7,42 @@ type p:{
     state:str
 };
 
-extend p{
-    function constructor(maxdashes:num,maxstamina:num): p {
+extend plr{
+    function constructor(): plr {
 
-        line plr = {
-            maxdashes:maxdashes,
-            dashes:maxdashes,
-            maxstamina:maxstamina,
-            stamina:maxstamina,
+        line p = {
+            name:'%uuid',
+            maxdashes:1,
+            dashes:1,
+            maxstamina:110,
+            stamina:110,
             state:"normal"
-        } as p;
-
-        return plr;
+        } as plr;
+        return p;
     }
 
-    function dash(){
-        default.launchForward(10, addToCurrentVel="False");
+    function dash(this:plr){
+        if (this['state']=='dead'){
+            return;
+        }
+        if (this['dashes']<1){
+            return;
+        }
+        this['state']='dashing';
+
+        line v = default.velocity;
+        v.y=0;
+        default.launchForward(num.clamp(vec.len(v)*10, 10, 1000), addToCurrentVel="False");
+        this['dashes']--;
+        allPlayers.playSound(csnd('celestelike:dash'), default.location);
     }
 
-    function filteredRegen(this: p): p{
-       
+    function filteredRegen(this: plr): plr{
+        if (this['dashes']<this['maxdashes']){
+            this['dashes']=this['maxdashes'];
+        }
+        if (this['stamina']<this['maxstamina']){
+            this['stamina']=this['maxstamina'];
+        }
     }
 }

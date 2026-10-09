@@ -1,18 +1,17 @@
 
 gameevent startup{
-    declare global Gmaxdashes: num=1;
-    declare global Gmaxstamina: num=110;
     start Gloop();
 }
 
 
 playerevent join{
+    declare global "%uuid"=plr();
     default.sendResourcePack('https://minepack.fr/pack/aaa28982-1e2f-4b0a-b9bf-3242f68f3d7a');
-    declare global "%uuid":p=p(Gmaxdashes,Gmaxstamina);
 }
 
 playerevent leftClick{
     global "%uuid".dash();
+    
 }
 
 playerevent exhaustion{
@@ -24,7 +23,7 @@ playerevent takeDamage{
 }
 
 playerevent movementKeyChange{
-    if (event.movementKeyEquals()=="jump"){
+    if (event.movementKeyEquals()=="Jump"){
         
     }
 }
