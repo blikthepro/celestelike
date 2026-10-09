@@ -2,5 +2,6 @@ function Ploop(){
     if (player.isGrounded()){
         global "%uuid".filteredRegen();
     }
-       
+    global "%uuid".hud();
 }
+
