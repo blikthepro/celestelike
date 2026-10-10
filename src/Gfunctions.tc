@@ -1,4 +1,4 @@
-function snd2(
+function snd2( //this is a constructor for a sound that actually accepts custom resourcepack sounds
     id:str,
     pitch?:num=1,
     volume?: num=2,

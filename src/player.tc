@@ -4,7 +4,9 @@ type plr:{
     dashes:num,
     maxstamina:num,
     stamina:num,
-    state:str
+    state:str,
+    refilldash:str,
+    refillstam:str
 };
 
 extend plr{
@@ -16,12 +18,15 @@ extend plr{
             dashes:1,
             maxstamina:110,
             stamina:110,
-            state:"normal"
+            state:"normal",
+            refilldash:'true',
+            refillstam:'true'
         } as plr;
         return p;
     }
+    //some of these should be moved to their own files and leave the constructor alone
 
-    function dash(this:var[plr]){
+    function dash(this:var[plr]){ //this is how you make the class method work, no other way as far as i can tell
         if (this['state']=='dead'){
             return;
         }
