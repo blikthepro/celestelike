@@ -47,9 +47,7 @@ extend plr{
         this['state']='normal';
     }
 
-    function hud(this:var[plr]){
-        selected.sendActionBar(this['state']);
-    }
+
 
     function jumpKeyFilter(this:var[plr]){
         if (this['state']=='grab'){

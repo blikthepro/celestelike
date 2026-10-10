@@ -1,0 +1,8 @@
+extend plr{
+    function hud(this:var[plr]){
+        line dashcolors=['#44B7FF','#AC3232','#FF6DEF','#1141df','#ff00ff','#ffff00'];
+        selected.setExperience(this['stamina']);
+        line dashcolor=dashcolors[this['dashes']+1];
+        selected.sendActionBar(s'<gray>-{'+txt.parseExpression('<%var(dashcolor)>')+this['state']+s'<reset><gray>}-');
+    }
+}
