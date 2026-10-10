@@ -65,7 +65,7 @@ extend plr{
         if (player.isSwimming()){
             return;
         }
-        
+        line wjpoints= [vec(.5,0,0),vec(0,0,.5),vec(-.5,0,0),vec(0,0,-.5)];
 
     }
 }
