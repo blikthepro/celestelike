@@ -17,15 +17,25 @@ extend plr{
             p=loc.shiftOnVector(default.midpointLocation,p as vec);
 
             if (game.locationIsInBlock(p as loc)){
-                allPlayers.playSound(snd.setPitch(game.getBlockSound(game.getBlockMaterial(p as loc, returnValue="Item"),soundType="Hit Sound"),0.75),p as loc);
+                //sound and block fracture
+                if (this['state']=="dashing"){
+                    allPlayers.playSound(snd2("celestelike:wallbounce",1,.5), p as loc);
+                }
+                else{
+                    allPlayers.playSound(snd2("celestelike:walljump",1,.5), p as loc);
+                }
+                allPlayers.playSound(snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(p as loc, returnValue="Item"),soundType="Hit Sound"),0.75), 2),p as loc);
                 allPlayers.displayBlockFracture(p as loc,num.random(1,7), overwritePrevious="True");
+
+
+                //clamps your y velocity
                 default.setVelocity(vec(
                     default.velocity.x,
                     num.clamp(
-                        default.velocity.y,0,1000),
+                        default.velocity.y,0,0.4),
                     default.velocity.z));
                 this['state']='walljump';
-
+                        //this gives you the impulse based on your input
                 if (list.contains(default.pressedMovementKeys, ['forward','backward','left','right'])){
                     default.launchTowardLocation(p as loc,-40, ignoreDistance="True");
                     default.launchUp(7);

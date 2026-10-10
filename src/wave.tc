@@ -1,0 +1,16 @@
+extend plr{
+    function wave(this:var[plr]){
+        if(vec.len(vec(default.velocity.x,0,default.velocity.z))<.2){
+            return;
+        }
+        if (var.isInRange(this['dashAngle'],-15,19.999)){
+            default.setVelocity(vec(default.velocity.x,0,default.velocity.z)*1.5);
+            allPlayers.playSound(snd2("celestelike:super"),default.location);
+        }
+        if (this['dashAngle']>=20){
+            default.setVelocity(vec(default.velocity.x,0,default.velocity.z)*3);
+            default.launchUp(-1);
+            allPlayers.playSound(snd2("celestelike:hyper"),default.location);
+        }
+    }
+}

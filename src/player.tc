@@ -6,7 +6,8 @@ type plr:{
     stamina:num,
     state:str,
     refillDash:str,
-    refillStam:str
+    refillStam:str,
+    dashAngle:num
 };
 
 extend plr{
@@ -42,17 +43,17 @@ extend plr{
             return;
         }
         this['state']='dashing';
-
-        default.launchForward(
-            num.clamp(
-                vec.len(
-                    vec(
-                        default.velocity.x,
-                        0,
-                        default.velocity.z
-                    ))*10, 10, 1000), addToCurrentVel="False");
-        
         this['dashes']--;
+        this['dashAngle']=default.pitch;
+
+        line dir=default.direction;
+        if(default.isGrounded()){
+            dir.setComponent(0,comp="Y");
+        }
+        print (dir);
+        default.setVelocity(vec.setLength(vec(default.velocity.x,0,default.velocity.z)+dir,1), addToCurrentVel="False");
+
+
         allPlayers.playSound(snd2("celestelike:dash"), default.location);
         start this.delayedStateReset(this,5);
     }
