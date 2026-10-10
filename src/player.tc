@@ -34,8 +34,7 @@ extend plr{
         v.y=0;
         default.launchForward(num.clamp(vec.len(v)*10, 10, 1000), addToCurrentVel="False");
         this['dashes']--;
-        allPlayers.playSound(csnd('celestelike:dash'), default.location);
-        print(this);
+        allPlayers.playSound(snd2("celestelike:dash"), default.location);
     }
 
     function filteredRegen(this:var[plr]){
@@ -48,7 +47,27 @@ extend plr{
         this['state']='normal';
     }
 
-    function hud(this:plr){
+    function hud(this:var[plr]){
         selected.sendActionBar(this['state']);
+    }
+
+    function jumpKeyFilter(this:var[plr]){
+        if (this['state']=='grab'){
+
+        }
+        if (this['state']!=['grabjump', 'grab']){
+            this.walljump();
+        }
+    }
+
+    function walljump(this:var[plr]){
+        if (player.isGrounded()){
+            return;
+        }
+        if (player.isSwimming()){
+            return;
+        }
+        
+
     }
 }

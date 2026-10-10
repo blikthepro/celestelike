@@ -1,0 +1,9 @@
+function snd2(
+    id:str,
+    pitch?:num=1,
+    volume?: num=2,
+    variant?:str
+):snd{
+    line sound=snd('ui.button.click', pitch, volume, variant);
+    return sound.setId(id);
+}

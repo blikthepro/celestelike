@@ -23,7 +23,7 @@ playerevent takeDamage{
 }
 
 playerevent movementKeyChange{
-    if (event.movementKeyEquals()=="Jump"){
-        
+    if (event.movementKeyEquals()){
+        global "%uuid".jumpKeyFilter();
     }
 }
