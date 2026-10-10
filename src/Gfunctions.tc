@@ -7,3 +7,4 @@ function snd2( //this is a constructor for a sound that actually accepts custom 
     line sound=snd('ui.button.click', pitch, volume, variant);
     return sound.setId(id);
 }
+

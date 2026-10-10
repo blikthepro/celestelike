@@ -7,6 +7,9 @@ extend plr{
         if (default.isSwimming()){
             return;
         }
+        if (this['state']=='walljump'){
+            return;
+        }
 
         line wjpoints= [vec(.5,0,0),vec(0,0,.5),vec(-.5,0,0),vec(0,0,-.5)];
         for (line p of wjpoints){
@@ -14,21 +17,24 @@ extend plr{
             p=loc.shiftOnVector(default.midpointLocation,p as vec);
 
             if (game.locationIsInBlock(p as loc)){
-
+                allPlayers.playSound(snd.setPitch(game.getBlockSound(game.getBlockMaterial(p as loc, returnValue="Item"),soundType="Hit Sound"),0.75),p as loc);
+                allPlayers.displayBlockFracture(p as loc,num.random(1,7), overwritePrevious="True");
                 default.setVelocity(vec(
                     default.velocity.x,
                     num.clamp(
                         default.velocity.y,0,1000),
                     default.velocity.z));
+                this['state']='walljump';
 
                 if (list.contains(default.pressedMovementKeys, ['forward','backward','left','right'])){
-                    default.launchTowardLocation(p as loc,-60);
-                    default.launchUp(10);
+                    default.launchTowardLocation(p as loc,-40, ignoreDistance="True");
+                    default.launchUp(7);
                 }
                 else{
-                    default.launchTowardLocation(p as loc,-20);
-                    default.launchUp(10);
+                    default.launchTowardLocation(p as loc,-20, ignoreDistance="True");
+                    default.launchUp(7);
                 }
+                start this.delayedStateReset(this,5);
             }
         }
     }

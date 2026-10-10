@@ -1,0 +1,11 @@
+process timer(value:var,time:num){
+    value=time;
+    while (value as num>0){
+        value as num--;
+        wait(1);
+    }
+}
+
+process runlater(func:str, time:num){
+    
+}

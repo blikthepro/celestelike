@@ -5,8 +5,8 @@ type plr:{
     maxstamina:num,
     stamina:num,
     state:str,
-    refilldash:str,
-    refillstam:str
+    refillDash:str,
+    refillStam:str
 };
 
 extend plr{
@@ -19,15 +19,19 @@ extend plr{
             maxstamina:110,
             stamina:110,
             state:"normal",
-            refilldash:'true',
-            refillstam:'true'
+            refillDash:'true',
+            refillStam:'true'
         } as plr;
         return p;
     }
     //some of these should be moved to their own files and leave the constructor alone
 
-    process timertick(){ //this ticks down timers, like for example the wall timer
-
+    process delayedStateReset(this:var[plr],time:num){
+        line temp= this['state'];
+        wait(time);
+        if (this['state']==temp){
+            this['state']='normal';
+        }
     }
 
     function dash(this:var[plr]){ //this is how you make the class method work, no other way as far as i can tell
@@ -50,15 +54,19 @@ extend plr{
         
         this['dashes']--;
         allPlayers.playSound(snd2("celestelike:dash"), default.location);
+        start this.delayedStateReset(this,5);
     }
 
     function filteredRegen(this:var[plr]){
-        if(this['refilldash']=='true'){
+        if (this['state']=='dashing'){
+            return;
+        }
+        if(this['refillDash']=='true'){
             if (this['dashes']<this['maxdashes']){
                 this['dashes']=this['maxdashes'];
             }
         }
-        if(this['refillstam']=='true'){
+        if(this['refillStam']=='true'){
             if (this['stamina']<this['maxstamina']){
                 this['stamina']=this['maxstamina'];
             }
