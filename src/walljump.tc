@@ -1,0 +1,35 @@
+extend plr{
+    function walljump(this:var[plr]){
+
+        if (default.isGrounded()){
+            return;
+        }
+        if (default.isSwimming()){
+            return;
+        }
+
+        line wjpoints= [vec(.5,0,0),vec(0,0,.5),vec(-.5,0,0),vec(0,0,-.5)];
+        for (line p of wjpoints){
+
+            p=loc.shiftOnVector(default.midpointLocation,p as vec);
+
+            if (game.locationIsInBlock(p as loc)){
+
+                default.setVelocity(vec(
+                    default.velocity.x,
+                    num.clamp(
+                        default.velocity.y,0,1000),
+                    default.velocity.z));
+
+                if (list.contains(default.pressedMovementKeys, ['forward','backward','left','right'])){
+                    default.launchTowardLocation(p as loc,-60);
+                    default.launchUp(10);
+                }
+                else{
+                    default.launchTowardLocation(p as loc,-20);
+                    default.launchUp(10);
+                }
+            }
+        }
+    }
+}

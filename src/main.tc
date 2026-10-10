@@ -8,7 +8,7 @@ playerevent join{
     declare global "%uuid"=plr(); //need to test in multiplayer to make sure this isn't acting up
     default.sendResourcePack('https://cdn.minepack.fr/pack/c78e10fe-881a-4818-a73a-ba95f8bc3a2d'); //old link is https://minepack.fr/pack/aaa28982-1e2f-4b0a-b9bf-3242f68f3d7a
 }        //management link is https://minepack.fr/manage/c78e10fe-881a-4818-a73a-ba95f8bc3a2d/b2279a1a-e877-412b-b168-9d337cd21c1f
-
+        //new link is https://cdn.minepack.fr/pack/c78e10fe-881a-4818-a73a-ba95f8bc3a2d
 playerevent leftClick{
     global "%uuid".dash();
     
@@ -23,7 +23,7 @@ playerevent takeDamage{
 }
 
 playerevent movementKeyChange{
-    if (event.movementKeyEquals()){
+    if (event.movementKeyEquals(key="Jump (Space)")){
         global "%uuid".jumpKeyFilter();
     }
 }
