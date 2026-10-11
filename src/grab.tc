@@ -1,0 +1,49 @@
+extend plr{
+    function climb(this:var[plr]){
+        if(this['stamina']<=0){
+            return;
+        }
+
+        if(['exhausted','feather','climbjump','climbing'].contains(this['state'])){
+            return;
+        }
+
+        line climbPoints= [vec(.5,0,0),vec(0,0,.5),vec(-.5,0,0),vec(0,0,-.5)];
+        line slippies=[item('ice'), item("packed_ice"),item('blue_ice')];
+
+        for (line p of climbPoints){
+            line l=loc.shiftOnVector(selected.midpointLocation,p as vec);
+            if (game.locationIsInBlock(l)){
+                if (game.blockEquals(l,slippies as item)){
+                    continue;
+                }
+                else{
+                    this['state']='climbing';
+
+                    start this.climbing(this, targetMode="With current selection");
+                    break;
+                }
+            }
+        }
+        
+    }
+    process climbing(this:var[plr]){
+        selected.setVelocity(vec(selected.velocity.x, 0, selected.velocity.z), addToCurrentVel="False");
+        selected.setFallingAttribute(0,attr="Gravity");
+        while (this['stamina']>0){
+            if (!selected.isSneaking()){
+                this['state']='normal';
+
+                break;
+            }
+            if(!game.locationIsInBlock(selected.standingBlockLocation)){
+                this['stamina']as num--;
+            }
+        wait();
+        }
+        if (this['stamina']==0){
+            this['state']='exhausted';
+        }
+        selected.setFallingAttribute(0.08,attr="Gravity");
+    }
+}

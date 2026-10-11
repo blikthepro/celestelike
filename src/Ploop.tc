@@ -4,5 +4,8 @@ function Ploop(){
     }
     global "%uuid".hud();
     selected.setMovementAttribute(1-2*vec.len(vec(selected.velocity.x,0,selected.velocity.z)), attr="Friction modifier");
+    if (selected.isSneaking()){
+        global "%uuid".climb();
+    }
 }
 

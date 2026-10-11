@@ -8,11 +8,11 @@ extend plr{
             return;
         }
         if (var.isInRange(this['dashAngle'],-15,19.999)){
-            default.setVelocity((vec(default.velocity.x,-1,default.velocity.z)+default.direction)*1.5);
+            default.setVelocity((vec(default.velocity.x,-1,default.velocity.z)+default.direction)*1.5,addToCurrentVel="False");
             allPlayers.playSound(snd2("celestelike:super"),default.location);
         }
         if (this['dashAngle']>=20){
-            default.setVelocity((vec(default.velocity.x,0,default.velocity.z)+default.direction)*2);
+            default.setVelocity((vec(default.velocity.x,0,default.velocity.z)+default.direction)*2,addToCurrentVel="False");
             allPlayers.playSound(snd2("celestelike:hyper"),default.location);
         }
         this['state']="hwipping";
