@@ -1,16 +1,21 @@
 extend plr{
     function wave(this:var[plr]){
-        if(vec.len(vec(default.velocity.x,0,default.velocity.z))<.2){
+        line requiredSpeed:num=.4;
+        if (this["state"]=='hwipping'){
+            requiredSpeed==1;
+        }
+        if(vec.len(vec(default.velocity.x,0,default.velocity.z))<requiredSpeed){
             return;
         }
         if (var.isInRange(this['dashAngle'],-15,19.999)){
-            default.setVelocity(vec(default.velocity.x,0,default.velocity.z)*1.5);
+            default.setVelocity((vec(default.velocity.x,-1,default.velocity.z)+default.direction)*1.5);
             allPlayers.playSound(snd2("celestelike:super"),default.location);
         }
         if (this['dashAngle']>=20){
-            default.setVelocity(vec(default.velocity.x,0,default.velocity.z)*3);
-            default.launchUp(-1);
+            default.setVelocity((vec(default.velocity.x,0,default.velocity.z)+default.direction)*2);
             allPlayers.playSound(snd2("celestelike:hyper"),default.location);
         }
+        this['state']="hwipping";
+        start this.waveParticle(this);
     }
 }

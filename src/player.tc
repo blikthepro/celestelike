@@ -48,14 +48,17 @@ extend plr{
 
         line dir=default.direction;
         if(default.isGrounded()){
-            dir.setComponent(0,comp="Y");
+            if (this['dashAngle']>0){       
+                dir=vec(default.direction.x,0,default.direction.z);
+            }
         }
-        print (dir);
+
         default.setVelocity(vec.setLength(vec(default.velocity.x,0,default.velocity.z)+dir,1), addToCurrentVel="False");
 
 
         allPlayers.playSound(snd2("celestelike:dash"), default.location);
         start this.delayedStateReset(this,5);
+        start this.dashParticle(this);
     }
 
     function filteredRegen(this:var[plr]){
