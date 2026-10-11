@@ -19,15 +19,15 @@ extend plr{
                 }
                 else{
                     this['state']='climbing';
-
-                    start this.climbing(this, targetMode="With current selection");
+                    line v=vec.between(selected.midpointLocation,l);
+                    start this.climbing(this,v, targetMode="With current selection");
                     break;
                 }
             }
         }
         
     }
-    process climbing(this:var[plr]){
+    process climbing(this:var[plr], climbDir:vec){
         selected.setVelocity(vec(selected.velocity.x, 0, selected.velocity.z), addToCurrentVel="False");
         selected.setFallingAttribute(0,attr="Gravity");
         while (this['stamina']>0){
@@ -39,6 +39,11 @@ extend plr{
             if(!game.locationIsInBlock(selected.standingBlockLocation)){
                 this['stamina']as num--;
             }
+            
+
+
+
+
         wait();
         }
         if (this['stamina']==0){

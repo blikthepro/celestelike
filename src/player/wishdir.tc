@@ -1,0 +1,36 @@
+extend plr{
+    function wishdir(this:var[plr]):vec{
+        line keys:list=selected.pressedMovementKeys;
+        keys.removeValue('jump','sneak','sprint');
+        if(keys.contains('forward')&&keys.contains('backward')){
+            keys.removeValue('forward','backward');
+        }
+        if(keys.contains('left')&&keys.contains('right')){
+            keys.removeValue('left','right');
+        }
+
+        line cardinal:dict={
+            'forward':0,
+            'backward':180,
+            'left':90,
+            'right':-90
+        };
+
+        line rotation:num=cardinal.get(keys[1] as str) as num;
+
+        if (keys.sizeEquals(2)){
+            line diagonal:dict={
+                left:45,
+                right:-45
+            };
+            if(keys[1]=='backward'){
+                diagonal['left']=-45;
+                diagonal['right']=45;
+            }
+            rotation+=diagonal.get(keys.get(2) as str) as num;
+        }
+        return vec.rotateAroundAxis(vec(selected.direction.x,0,selected.direction.z), rotation, axis="Y");
+
+        
+    }
+}
