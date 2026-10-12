@@ -8,6 +8,9 @@ function snd2( //this is a constructor for a sound that actually accepts custom 
     return sound.setId(id);
 }
 
-function vectorAngle(A:vec,B:vec):num{
-    return num.acos(vec.dot(A,B)/(A.len()*B.len()));
+
+function vectorAngle(A: vec, B: vec): num {
+    return num.acos(A.setLength(1).dot(B.setLength(1)));
 }
+
+

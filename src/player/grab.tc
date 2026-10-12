@@ -19,8 +19,8 @@ extend plr{
                 }
                 else{
                     this['state']='climbing';
-                    line v=vec.between(selected.midpointLocation,l);
-                    start this.climbing(this,v, targetMode="With current selection");
+
+                    start this.climbing(this,p as vec, targetMode="With current selection");
                     break;
                 }
             }
@@ -36,10 +36,36 @@ extend plr{
 
                 break;
             }
+            if(!game.locationIsInBlock(loc.shiftOnVector(selected.midpointLocation,climbDir))){
+                break;
+            }
+
             if(!game.locationIsInBlock(selected.standingBlockLocation)){
                 this['stamina']as num--;
             }
-            
+
+            if(selected.pressedMovementKeys.contains(['forward','backward','left','right'], checkMode="Has Any Value")){
+                line angle:num= vectorAngle(this.wishdir(),climbDir);
+
+                if(var.isInRange(angle,0,45)){
+                    selected.setVelocity(vec(selected.velocity.x,.15,selected.velocity.z), addToCurrentVel="False");
+                    this['stamina'] as num--;
+                }
+                if(var.isInRange(angle,46,135)){
+                    if(vec.len(vec(selected.velocity.x,0,selected.velocity.z))<=.2){
+                        line sidewaysClimb:vec=vec.setLength(vec.align(this.wishdir()),.2);
+                        selected.setVelocity(vec(sidewaysClimb.x, selected.velocity.y,sidewaysClimb.z), addToCurrentVel="False");
+                    }
+                }
+                if(var.isInRange(angle,136,180)){
+                    selected.setVelocity(vec(selected.velocity.x,-.15,selected.velocity.z), addToCurrentVel="False");
+                    this['stamina'] as num++;
+                }
+
+            }
+            else{
+                selected.setVelocity(vec(selected.velocity.x,0,selected.velocity.z), addToCurrentVel="False");
+            }
 
 
 

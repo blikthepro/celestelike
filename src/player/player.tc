@@ -35,7 +35,8 @@ extend plr{
         }
     }
 
-    function dash(this:var[plr]){ //this is how you make the class method work, no other way as far as i can tell
+    function dash(this:var[plr]){
+     //this is how you make the class method work, no other way as far as i can tell
         if (this['state']=='dead'){
             return;
         }
@@ -53,11 +54,10 @@ extend plr{
             }
         }
 
-        default.setVelocity(vec.setLength(vec(default.velocity.x,0,default.velocity.z)+dir,1), addToCurrentVel="False");
-
+        default.setVelocity(vec.setLength(vec(default.velocity.x,0,default.velocity.z)+dir,num.clamp(vec.len(default.velocity),1,1000)), addToCurrentVel="False");
 
         allPlayers.playSound(snd2("celestelike:dash"), default.location);
-        start this.delayedStateReset(this,5);
+        start this.delayedStateReset(this,10);
         start this.dashParticle(this);
     }
 
