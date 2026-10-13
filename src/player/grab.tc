@@ -4,7 +4,7 @@ extend plr{
             return;
         }
 
-        if(['exhausted','feather','climbjump','climbing'].contains(this['state'])){
+        if(['exhausted','feather','climbjumping','climbing'].contains(this['state'])){
             return;
         }
 
@@ -19,7 +19,7 @@ extend plr{
                 }
                 else{
                     this['state']='climbing';
-
+                    allPlayers.playSound(snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(l as loc, returnValue="Item"),soundType="Hit Sound"),0.75), 3),l as loc);
                     start this.climbing(this,p as vec, targetMode="With current selection");
                     break;
                 }
@@ -42,6 +42,9 @@ extend plr{
 
             if(!game.locationIsInBlock(selected.standingBlockLocation)){
                 this['stamina']as num--;
+            }
+            if (this['state']=='climbjumping'){
+                break;
             }
 
             if(selected.pressedMovementKeys.contains(['forward','backward','left','right'], checkMode="Has Any Value")){

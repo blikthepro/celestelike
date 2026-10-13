@@ -7,9 +7,10 @@ extend plr{
         if (default.isSwimming()){
             return;
         }
-        if (this['state']=='walljump'){
+        if (this['state']==['walljump','climbjumping']){
             return;
         }
+        
 
         line wjpoints= [vec(.5,0,0),vec(0,0,.5),vec(-.5,0,0),vec(0,0,-.5)];
         for (line p of wjpoints){
@@ -17,6 +18,10 @@ extend plr{
             p=loc.shiftOnVector(default.midpointLocation,p as vec);
 
             if (game.locationIsInBlock(p as loc)){
+                if(this['state']=='climbing'){
+                this.climbJump(p as loc);
+                return;
+            }
                 //sound and block fracture
                 if (this['state']=="dashing"){
                     allPlayers.playSound(snd2("celestelike:wallbounce",1,.5), p as loc);
@@ -24,7 +29,7 @@ extend plr{
                 else{
                     allPlayers.playSound(snd2("celestelike:walljump",1,.5), p as loc);
                 }
-                allPlayers.playSound(snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(p as loc, returnValue="Item"),soundType="Hit Sound"),0.75), 2),p as loc);
+                allPlayers.playSound(snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(p as loc, returnValue="Item"),soundType="Break Sound"),0.75), 2),p as loc);
                 allPlayers.displayBlockFracture(p as loc,num.random(1,7), overwritePrevious="True");
 
 
@@ -47,5 +52,14 @@ extend plr{
                 start this.delayedStateReset(this,5);
             }
         }
+    }
+    
+    function climbJump(this:var[plr],p:loc){
+        this['state']='climbjumping';
+        default.launchUp(6,addToCurrentVel="False");
+        start this.delayedStateReset(this,10);
+        this['stamina']-=25;
+        allPlayers.playSound(snd2("celestelike:climbjump"),default.location);
+        allPlayers.playSound(snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(p as loc, returnValue="Item"),soundType="Break Sound"),0.75), 2),p as loc);
     }
 }
