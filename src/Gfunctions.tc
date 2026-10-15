@@ -1,16 +1,16 @@
-function snd2( //this is a constructor for a sound that actually accepts custom resourcepack sounds
+function snd2 ( //this is a constructor for a sound that actually accepts custom resourcepack sounds
     id:str,
     pitch?:num=1,
     volume?: num=2,
     variant?:str
 ):snd{
-    line sound=snd('ui.button.click', pitch, volume, variant);
-    return sound.setId(id);
+    line sound=snd ('ui.button.click', pitch, volume, variant);
+    return sound.setId (id);
 }
 
 
-function vectorAngle(A: vec, B: vec): num {
-    return num.acos(A.setLength(1).dot(B.setLength(1)));
+function vectorAngle (A: vec, B: vec): num {
+    return num.acos (A.setLength (1).dot(B.setLength(1)));
 }
 
 

@@ -1,7 +1,7 @@
 extend plr{
-    function hud(this:var[plr]){
+    function hud (this:var[plr]){
         line dashcolor=dashcolors[this['dashes']+1];
-        selected.setExperience(this['stamina'],unit="Level Percentage");
-        selected.sendActionBar(s'<gray>-{'+txt.parseExpression('<%var(dashcolor)>')+this['state']+s'<reset><gray>}-');
+        selected.setExperience  (this['stamina'],unit="Level Percentage");
+        selected.sendActionBar (s'<gray>-{'+txt.parseExpression ('<%var(dashcolor)>')+this['state']+s'<reset><gray>}-');
     }
 }

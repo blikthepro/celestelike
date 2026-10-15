@@ -1,25 +1,25 @@
 extend plr{
-    function wave(this:var[plr]){
+    function wave  (this:var[plr]){
 
-        wait();
-        if !(this['state']=='dashing'){
+        wait  ();
+        if !  (this['state']=='dashing'){
             return;
         }
         line requiredSpeed:num=.3;
 
-        if(vec.len(vec(default.velocity.x,0,default.velocity.z))<requiredSpeed){
+        if  (vec.len  (vec  (default.velocity.x,0,default.velocity.z))<requiredSpeed){
             return;
         }
-        if (var.isInRange(this['dashAngle'],-15,19.999)){
-            default.setVelocity((vec(default.velocity.x,.3,default.velocity.z)+vec(default.direction.x,0,default.direction.z))*1.1,addToCurrentVel="False");
-            allPlayers.playSound(snd2("celestelike:super"),default.location);
+        if  (var.isInRange (this['dashAngle'],-15,19.999)){
+            default.setVelocity ( (vec (default.velocity.x,.3,default.velocity.z)+vec (default.direction.x,0,default.direction.z))*1.1,addToCurrentVel="False");
+            allPlayers.playSound (snd2 ("celestelike:super"),default.location);
         }
-        if (this['dashAngle']>=20){
-            default.setVelocity((vec(default.velocity.x,.15,default.velocity.z)+vec(default.direction.x,0,default.direction.z))*1.2,addToCurrentVel="False");
-            allPlayers.playSound(snd2("celestelike:hyper"),default.location);
+        if  (this['dashAngle']>=20){
+            default.setVelocity ( (vec (default.velocity.x,.15,default.velocity.z)+vec (default.direction.x,0,default.direction.z))*1.2,addToCurrentVel="False");
+            allPlayers.playSound (snd2 ("celestelike:hyper"),default.location);
         }
         this['state']="hwipping";
         this['dashes']=this['maxdashes'];
-        start this.waveParticle(this);
+        start this.waveParticle (this);
     }
 }

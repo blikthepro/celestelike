@@ -1,19 +1,19 @@
 extend plr{
-    process dashParticle(this:var[plr]){
-        wait(1);
+    process dashParticle (this:var[plr]){
+        wait (1);
         line oldLoc=default.location;
-        repeat(10){
-            allPlayers.displayParticleLine(par.setMotion(par.setColor(par("trail"),"#FFFFFF"),default.velocity),oldLoc,default.location);
-            allPlayers.displayParticleLine(par.setMotion(par.setColor(par("entity_effect"),dashcolors[this['dashes']+1]as str),vec(0,0,0),0),oldLoc,default.location);
+        repeat (10){
+            allPlayers.displayParticleLine (par.setMotion (par ("trail",color='#ffffff'),default.velocity),oldLoc,default.location);
+            allPlayers.displayParticleLine (par.setMotion (par.setColor (par ("entity_effect"),dashcolors[this['dashes']+1]as str),vec (0,0,0),0),oldLoc,default.location);
             oldLoc=default.location;
-            wait(1);
+            wait (1);
         }
     }
-    process waveParticle(this:var[plr]){
-        wait(1);
-        repeat(5){
-            allPlayers.displayParticleCircle(par.setMotion(par("end_rod"),vec(0,0,0),0),loc.shiftRotation(loc.setDirection(default.midpointLocation,default.velocity),90,rotationAxis="Pitch"), 1.5);
-            wait(3);
+    process waveParticle (this:var[plr]){
+        wait (1);
+        repeat (5){
+            allPlayers.displayParticleCircle (par ("end_rod", motion=vec(0,0,0), motionVariation=0),loc.shiftRotation (loc.setDirection (default.midpointLocation,default.velocity),90,rotationAxis="Pitch"), 1.5);
+            wait (3);
         }
     }
 }
