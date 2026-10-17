@@ -1,0 +1,6 @@
+function bumper(pos:loc,block:str){
+    pos.align(align="Block center");
+    print(pos);
+    selected.launchTowardLocation(pos,-200,addToCurrentVel="False",ignoreDistance="True");
+    
+}

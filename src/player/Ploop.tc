@@ -1,4 +1,5 @@
 function Ploop(){
+    global "%uuid".ticker();
     if (player.isGrounded()){
         global "%uuid".filteredRegen();
     }

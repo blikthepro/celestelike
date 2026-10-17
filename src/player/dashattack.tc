@@ -1,0 +1,19 @@
+extend plr{
+    process dashAttack(this:var[plr]){
+        line nest:list[list[str]]=[
+            ['dreamBlock','tinted_glass']
+
+        ];
+
+
+
+        line rayLoc:loc=game.raycast(default.eyeLocation,3,blockCollision="Solid blocks");
+
+        for (line ls of nest){
+            if(ls.contains(game.getBlockMaterial(rayLoc,returnValue="Block ID (oak_log)"))){
+                line caller:str= ls.get(1);
+                call "%var(caller)"(this,rayLoc);
+            }
+        }
+    }
+}

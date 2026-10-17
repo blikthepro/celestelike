@@ -1,0 +1,37 @@
+function dreamBlock(this:var[plr],rayLoc:loc){
+    this['state']='dreaming';
+    allPlayers.displayParticleCircle(par('note',color='#9400d3',colorVariation=5),rayLoc.shiftRotation(90,rotationAxis="Pitch"));
+    line finalLoc:loc=game.raycast(default.eyeLocation,3,blockCollision="None");
+    allPlayers.playSound(snd2('celestelike:blocks.dreamenter'));
+    while(!game.blockEquals(finalLoc,'air')){
+        finalLoc=game.raycast(finalLoc,1,blockCollision="None",entityCollision="False");
+        allPlayers.displayParticleEffect(par('dripping_obsidian_tear'),finalLoc);
+    }
+    finalLoc=game.raycast(finalLoc,1,blockCollision="None",entityCollision="False");
+    line finalVec:vec=vec.between(default.eyeLocation,finalLoc);
+
+    default.setToSpectatorMode();
+    allPlayers.playSound(snd2('celestelike:blocks.dreamtravel'),default.location);
+    while(game.blockEquals(default.eyeLocation,'air')){
+
+        default.setVelocity(finalVec.setLength(.75),addToCurrentVel="False");
+        default.launchForward(2,addToCurrentVel="True");
+        wait;
+    }
+    while(!game.blockEquals(default.eyeLocation,'air')){
+
+        default.setVelocity(finalVec.setLength(.75),addToCurrentVel="False");
+        default.launchForward(2,addToCurrentVel="True");
+        wait;
+    }
+    repeat(2){
+        default.setVelocity(finalVec.setLength(.75),addToCurrentVel="False");
+        default.launchForward(2,addToCurrentVel="True");
+        wait;
+    }
+
+    allPlayers.stopSounds(snd2('celestelike:blocks.dreamtravel'));
+    allPlayers.playSound(snd2('celestelike:blocks.dreamexit'),default.location);
+    default.setToAdventureMode();
+    this.filteredRegen();
+}

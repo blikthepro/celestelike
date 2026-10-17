@@ -1,23 +1,29 @@
 extend plr{
     function hitbox(this:var[plr]){
         line boxPoints=[vec(.2,  .45, .2), vec(-.2, .45, .2), vec(.2, -.45, .2), vec(.2, .45, -.2), vec(-.2, -.45, .2), vec(-.2, .45, -.2), vec(.2, -.45, -.2), vec(-.2, -.45, -.2)];
-        line nest:list[list[str]]=[
-            ['death', 'small_amethyst_bud', 'medium_amethyst_bud', 'large_amethyst_bud', 'amethyst_cluster', 'pointed_dripstone'], 
-            ['spring', 'piston'], 
-            ['bumper', 'prismarine', 'purpur_block'], 
+        line nest:list[list]=[
+            ['death',40, 'small_amethyst_bud', 'medium_amethyst_bud', 'large_amethyst_bud', 'amethyst_cluster', 'pointed_dripstone'], 
+            ['spring',5, 'piston'], 
+            ['bumper',5, 'prismarine', 'purpur_block'], 
 
         ];
 
         
-        
+
         for (line v of boxPoints){
             line pos:loc=loc.shiftOnVector (selected.midpointLocation,  v as vec);
             //allPlayers.displayParticleEffect(par('trail',  duration=1,  color='#fc7812'), loc.shiftOnVector(selected.midpointLocation, v as vec));
             if (game.locationIsInBlock (pos)){
                 for (line ls of nest){
-                    if(ls.contains (game.getBlockMaterial (pos , returnValue= "Block ID (oak_log)"))){
-                        line caller= ls.get (1);
-                        call "%var(caller)";
+                    line block:str=game.getBlockMaterial (pos , returnValue= "Block ID (oak_log)");
+                    if(ls.contains (block)){
+                        line caller:str= ls.get (1) as str;
+                        if(this['timers'].hasKey(caller)){
+                            break;
+                        }
+                        this['timers'][caller]=ls.get(2) as num;
+
+                        call "%var(caller)"(pos,block,this);
                         break;
                     }
                 }

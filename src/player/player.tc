@@ -8,7 +8,7 @@ type plr:{
     refillDash:str,
     refillStam:str,
     dashAngle:num,
-    collisions:list
+    timers:dict[num]
 };
 
 extend plr{
@@ -23,11 +23,24 @@ extend plr{
             state:"normal",
             refillDash:'true',
             refillStam:'true',
-            collisions:[]
+            timers:{}
         } as plr;
         return p;
     }
     //some of these should be moved to their own files and leave the constructor alone
+    function ticker(this:var[plr]){
+        for (line key, line value of this['timers']){
+            
+            if(value>0){
+                this['timers'][key]--;
+            }
+            else{
+                line temp=this['timers'];
+                temp.remove(key);
+                this['timers']=temp;
+            }
+        }
+    }
 
     process delayedStateReset (this:var[plr],time:num){
         line temp= this['state'];
@@ -61,7 +74,10 @@ extend plr{
         allPlayers.playSound (snd2 ("celestelike:dash"), default.location);
         start this.delayedStateReset (this,10);
         start this.dashParticle (this);
+        start this.dashAttack(this);
     }
+
+    
 
     function filteredRegen (this:var[plr]){
         if  (this['state']=='dashing'){
