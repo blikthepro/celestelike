@@ -7,11 +7,12 @@ extend plr{
             ['bumper',5, 'prismarine', 'purpur_block'], 
 
         ];
-
+//the format is ['key',timer value, blocks]
         
 
         for (line v of boxPoints){
             line pos:loc=loc.shiftOnVector (selected.midpointLocation,  v as vec);
+            //note: find a way to have the code below a toggle that's not ass 
             //allPlayers.displayParticleEffect(par('trail',  duration=1,  color='#fc7812'), loc.shiftOnVector(selected.midpointLocation, v as vec));
             if (game.locationIsInBlock (pos)){
                 for (line ls of nest){

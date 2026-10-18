@@ -1,14 +1,14 @@
 function Ploop(){
-    global "%uuid".ticker();
+    global "%uuid".ticker();//tick timers
     if (player.isGrounded()){
-        global "%uuid".filteredRegen();
+        global "%uuid".filteredRegen();//regen if grounded
     }
-    global "%uuid".hud();
-    selected.setMovementAttribute(1-2*vec.len(vec(selected.velocity.x,0,selected.velocity.z)), attr="Friction modifier");
+    global "%uuid".hud();//update hud
+    selected.setMovementAttribute(1-2*vec.len(vec(selected.velocity.x,0,selected.velocity.z)), attr="Friction modifier");//set friction inverse to speed
     if (selected.isSneaking()){
-        global "%uuid".climb();
+        global "%uuid".climb();//climb if sneaking
     }
-    global "%uuid".hitbox();
+    global "%uuid".hitbox();//hitbox procedure
 }
 
 

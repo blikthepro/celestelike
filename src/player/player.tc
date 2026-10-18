@@ -29,6 +29,7 @@ extend plr{
     }
     //some of these should be moved to their own files and leave the constructor alone
     function ticker(this:var[plr]){
+//you can add a timer in this by doing this['timers'][blahblah]=number; but the hitbox code automatically handles it
         for (line key, line value of this['timers']){
             
             if(value>0){
@@ -63,10 +64,8 @@ extend plr{
         this['dashAngle']=default.pitch;
 
         line dir=default.direction;
-        if (default.isGrounded ()){
-            if  (this['dashAngle']>0){       
+        if (default.isGrounded () && this['dashAngle']>0 ){
                 dir=vec (default.direction.x,0,default.direction.z);
-            }
         }
 
         default.setVelocity (vec.setLength (dir, num.clamp (vec.len (vec (default.velocity.x,0,default.velocity.z)),1,1000)));
@@ -83,15 +82,11 @@ extend plr{
         if  (this['state']=='dashing'){
             return;
         }
-        if (this['refillDash']=='true'){
-            if  (this['dashes']<this['maxdashes']){
+        if (this['refillDash']=='true' && this['dashes']<this['maxdashes']){
                 this['dashes']=this['maxdashes'];
-            }
         }
-        if (this['refillStam']=='true'){
-            if  (this['stamina']<this['maxstamina']){
+        if (this['refillStam']=='true' && this['stamina']<this['maxstamina']){
                 this['stamina']=this['maxstamina'];
-            }
         }
         this['state']='normal';
     }

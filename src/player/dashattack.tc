@@ -4,7 +4,8 @@ extend plr{
             ['dreamBlock','tinted_glass']
 
         ];
-
+ //raycast as an alternative way to interact with stuff. i think only dream blocks use dash attack
+ //muuuuch more smoother than putting these in the hitbox code
 
 
         line rayLoc:loc=game.raycast(default.eyeLocation,3,blockCollision="Solid blocks");

@@ -1,5 +1,6 @@
 extend plr{
     function wishdir (this:var[plr]):vec{
+//rotates the player's looking direction based on pressed keys, getting the movement vector the player applies to themself when pressing wasd
         line keys:list=selected.pressedMovementKeys;
         keys.removeValue ('jump','sneak','sprint');
         if (keys.contains ('forward')&&keys.contains ('backward')){

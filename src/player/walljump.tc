@@ -1,6 +1,6 @@
 extend plr{
     function walljump  (this:var[plr]){
-
+        //sanity checks
         if   (default.isGrounded  ()){
             return;
         }
@@ -49,11 +49,11 @@ extend plr{
                     default.launchTowardLocation (p as loc,-20, ignoreDistance="True");
                     default.launchUp (7);
                 }
-                start this.delayedStateReset (this,5);
+                start this.delayedStateReset (this,5);//note: could redo this as a timer?
             }
         }
     }
-    
+    //its here because idfk its a walljump technically
     function climbJump (this:var[plr],p:loc){
         this['state']='climbjumping';
         default.launchUp (6,addToCurrentVel="False");
