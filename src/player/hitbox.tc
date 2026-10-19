@@ -1,6 +1,6 @@
 extend plr{
     function hitbox(this:var[plr]){
-        line boxPoints=[vec(.2,  .45, .2), vec(-.2, .45, .2), vec(.2, -.45, .2), vec(.2, .45, -.2), vec(-.2, -.45, .2), vec(-.2, .45, -.2), vec(.2, -.45, -.2), vec(-.2, -.45, -.2)];
+        global boxPoints:list=[vec(.2,  .45, .2), vec(-.2, .45, .2), vec(.2, -.45, .2), vec(.2, .45, -.2), vec(-.2, -.45, .2), vec(-.2, .45, -.2), vec(.2, -.45, -.2), vec(-.2, -.45, -.2)];
         line nest:list[list]=[
             ['death',40, 'small_amethyst_bud', 'medium_amethyst_bud', 'large_amethyst_bud', 'amethyst_cluster', 'pointed_dripstone'], 
             ['spring',5, 'piston'], 

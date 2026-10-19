@@ -4,7 +4,7 @@ extend plr{
             return;
         }
 
-        if (['exhausted','feather','climbjumping','climbing'].contains (this['state'])){
+        if (['exhausted','feather','climbjumping','climbing','dead'].contains (this['state'])){
             return;
         }
 

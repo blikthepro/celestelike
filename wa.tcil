@@ -1,0 +1,37 @@
+{
+  "compilationMode": "item",
+  "id": "wa",
+  "items": {
+    "boom_0": {
+      "data": "{components:{\"minecraft:fireworks\":{explosions:[{colors:[6719955],shape:\"small_ball\"}],flight_duration:1b}},count:1,id:\"minecraft:firework_rocket\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsElEQVR4Xu2SsQmAMBREbe0FCydQcDS3cAnXsHMHGxsnSR9N4EAOBFF/fsQ8uEKNuUd+siyReMhU19aF3wdDTWDYS13WpvHpytKH14mhJoBiHD2eISAuoi6AYhZA+qry4f9eQ10AjPNijwlWDNQFjDHWhUfB68RQF+DLiFHwOjGiEcAo/ieAYiT4JYxGAKP4nwCKkbNL2Ba5PYa/3yYaAWzMAq8XMuoCjNhRX0Vd4LNsLcmEGIVilpgAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "boom_1": {
+      "data": "{components:{\"minecraft:fireworks\":{explosions:[{colors:[11743532],shape:\"small_ball\"}],flight_duration:1b}},count:1,id:\"minecraft:firework_rocket\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsElEQVR4Xu2SsQmAMBREbe0FCydQcDS3cAnXsHMHGxsnSR9N4EAOBFF/fsQ8uEKNuUd+siyReMhU19aF3wdDTWDYS13WpvHpytKH14mhJoBiHD2eISAuoi6AYhZA+qry4f9eQ10AjPNijwlWDNQFjDHWhUfB68RQF+DLiFHwOjGiEcAo/ieAYiT4JYxGAKP4nwCKkbNL2Ba5PYa/3yYaAWzMAq8XMuoCjNhRX0Vd4LNsLcmEGIVilpgAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "boom_2": {
+      "data": "{components:{\"minecraft:fireworks\":{explosions:[{colors:[14188952],shape:\"small_ball\"}],flight_duration:1b}},count:1,id:\"minecraft:firework_rocket\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsElEQVR4Xu2SsQmAMBREbe0FCydQcDS3cAnXsHMHGxsnSR9N4EAOBFF/fsQ8uEKNuUd+siyReMhU19aF3wdDTWDYS13WpvHpytKH14mhJoBiHD2eISAuoi6AYhZA+qry4f9eQ10AjPNijwlWDNQFjDHWhUfB68RQF+DLiFHwOjGiEcAo/ieAYiT4JYxGAKP4nwCKkbNL2Ba5PYa/3yYaAWzMAq8XMuoCjNhRX0Vd4LNsLcmEGIVilpgAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "boom_3": {
+      "data": "{components:{\"minecraft:fireworks\":{explosions:[{colors:[2437522],shape:\"small_ball\"}],flight_duration:1b}},count:1,id:\"minecraft:firework_rocket\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsElEQVR4Xu2SsQmAMBREbe0FCydQcDS3cAnXsHMHGxsnSR9N4EAOBFF/fsQ8uEKNuUd+siyReMhU19aF3wdDTWDYS13WpvHpytKH14mhJoBiHD2eISAuoi6AYhZA+qry4f9eQ10AjPNijwlWDNQFjDHWhUfB68RQF+DLiFHwOjGiEcAo/ieAYiT4JYxGAKP4nwCKkbNL2Ba5PYa/3yYaAWzMAq8XMuoCjNhRX0Vd4LNsLcmEGIVilpgAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "boom_4": {
+      "data": "{components:{\"minecraft:fireworks\":{explosions:[{colors:[14602026],shape:\"small_ball\"}],flight_duration:1b}},count:1,id:\"minecraft:firework_rocket\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsElEQVR4Xu2SsQmAMBREbe0FCydQcDS3cAnXsHMHGxsnSR9N4EAOBFF/fsQ8uEKNuUd+siyReMhU19aF3wdDTWDYS13WpvHpytKH14mhJoBiHD2eISAuoi6AYhZA+qry4f9eQ10AjPNijwlWDNQFjDHWhUfB68RQF+DLiFHwOjGiEcAo/ieAYiT4JYxGAKP4nwCKkbNL2Ba5PYa/3yYaAWzMAq8XMuoCjNhRX0Vd4LNsLcmEGIVilpgAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "boom_5": {
+      "data": "{components:{\"minecraft:fireworks\":{explosions:[{colors:[12801229],shape:\"small_ball\"}],flight_duration:1b}},count:1,id:\"minecraft:firework_rocket\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsElEQVR4Xu2SsQmAMBREbe0FCydQcDS3cAnXsHMHGxsnSR9N4EAOBFF/fsQ8uEKNuUd+siyReMhU19aF3wdDTWDYS13WpvHpytKH14mhJoBiHD2eISAuoi6AYhZA+qry4f9eQ10AjPNijwlWDNQFjDHWhUfB68RQF+DLiFHwOjGiEcAo/ieAYiT4JYxGAKP4nwCKkbNL2Ba5PYa/3yYaAWzMAq8XMuoCjNhRX0Vd4LNsLcmEGIVilpgAAAAASUVORK5CYII=",
+      "version": 4440
+    }
+  },
+  "lastEditedWithExtensionVersion": "0.0.6"
+}

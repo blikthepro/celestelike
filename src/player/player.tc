@@ -9,6 +9,7 @@ type plr:{
     refillStam:str,
     dashAngle:num,
     timers:dict[num]
+
 };
 
 extend plr{
@@ -79,9 +80,10 @@ extend plr{
     
 
     function filteredRegen (this:var[plr]){
-        if  (this['state']=='dashing'){
+        if  (['dashing','dead'].contains(this['state'],checkMode="Has Any Value")){
             return;
         }
+        
         if (this['refillDash']=='true' && this['dashes']<this['maxdashes']){
                 this['dashes']=this['maxdashes'];
         }

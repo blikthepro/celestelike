@@ -7,7 +7,7 @@ extend plr{
         if   (default.isSwimming ()){
             return;
         }
-        if  (['walljump','climbjumping','dreaming'].contains (this['state'])){
+        if  (['walljump','climbjumping','dreaming','dead'].contains (this['state'])){
             return;
         }
         

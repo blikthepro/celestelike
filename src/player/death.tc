@@ -1,0 +1,34 @@
+function death(pos:loc,this:var[plr]){
+
+    for (line v of global boxPoints as list){
+        allPlayers.displayParticleEffect(par('trail',  duration=60,  color='#fc7812',motion=vec(0)), loc.shiftOnVector(selected.midpointLocation, v as vec));
+    }
+    allPlayers.displayParticleEffect(par('trail',  duration=60,  color='#ff0000',motion=vec(0)), pos);
+
+    selected.givePotionEffect(pot("invisibility",1,50),particles="None",showIcon="False");
+    allPlayers.playSound(snd2("celestelike:predeath"),pos);
+    selected.setFallingAttribute(0,attr="Gravity");
+    selected.launchTowardLocation(pos,-20,addToCurrentVel="False",ignoreDistance="True");
+    selected.faceLocation(pos);
+    selected.launchUp(2);
+    global "%uuid"['state']='dead';
+    start deathProcess(this,targetMode="With current selection");
+}
+process deathProcess(this:var[plr]){
+    line explosions:list[item] =[
+        litem("wa", "boom_0"),
+        litem("wa", "boom_1"),
+        litem("wa", "boom_2"),
+        litem("wa", "boom_3"),
+        litem("wa", "boom_4"),
+        litem("wa", "boom_5")
+    ];
+    wait(10);
+    game.spawnFirework(explosions[this['dashes']+2],selected.midpointLocation,instant="True",movement="Upwards");
+    allPlayers.playSound(snd2('celestelike:death'),selected.midpointLocation);
+    wait(40);
+    selected.teleport(saved "%uuid respawn");
+    allPlayers.playSound(snd2("celestelike:respawn"),selected.midpointLocation);
+    selected.setFallingAttribute(0.08,attr="Gravity");
+    global "%uuid"['state']='normal';
+}
