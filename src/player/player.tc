@@ -13,7 +13,7 @@ type plr:{
 };
 
 extend plr{
-    function constructor (): plr {
+    function constructor(): plr {
 
         line p = {
             name:'%uuid',
@@ -31,9 +31,9 @@ extend plr{
     //some of these should be moved to their own files and leave the constructor alone
     function ticker(this:var[plr]){
 //you can add a timer in this by doing this['timers'][blahblah]=number; but the hitbox code automatically handles it
-        for (line key, line value of this['timers']){
+        for(line key, line value of this['timers']){
             
-            if(value>0){
+            if (value>0){
                 this['timers'][key]--;
             }
             else{
@@ -44,20 +44,20 @@ extend plr{
         }
     }
 
-    process delayedStateReset (this:var[plr],time:num){
+    process delayedStateReset(this:var[plr],time:num){
         line temp= this['state'];
-        wait (time);
+        wait(time);
         if (this['state']==temp){
             this['state']='normal';
         }
     }
 
-    function dash (this:var[plr]){
+    function dash(this:var[plr]){
      //this is how you make the class method work, no other way as far as i can tell
-        if  (this['state']=='dead'){
+        if (this['state']=='dead'){
             return;
         }
-        if  (this['dashes']<1){
+        if (this['dashes']<1){
             return;
         }
         this['state']='dashing';
@@ -65,22 +65,22 @@ extend plr{
         this['dashAngle']=default.pitch;
 
         line dir=default.direction;
-        if (default.isGrounded () && this['dashAngle']>0 ){
-                dir=vec (default.direction.x,0,default.direction.z);
+        if (default.isGrounded() && this['dashAngle']>0 ){
+                dir=vec(default.direction.x,0,default.direction.z);
         }
 
-        default.setVelocity (vec.setLength (dir, num.clamp (vec.len (vec (default.velocity.x,0,default.velocity.z)),1,1000)));
+        default.setVelocity(vec.setLength(dir, num.clamp(vec.len(vec(default.velocity.x,0,default.velocity.z)),1,1000)));
 
-        allPlayers.playSound (snd2 ("celestelike:dash"), default.location);
-        start this.delayedStateReset (this,10);
-        start this.dashParticle (this);
+        allPlayers.playSound(snd2("celestelike:dash"), default.location);
+        start this.delayedStateReset(this,10);
+        start this.dashParticle(this);
         start this.dashAttack(this);
     }
 
     
 
-    function filteredRegen (this:var[plr]){
-        if  (['dashing','dead'].contains(this['state'],checkMode="Has Any Value")){
+    function filteredRegen(this:var[plr]){
+        if (['dashing','dead'].contains(this['state'],checkMode="Has Any Value")){
             return;
         }
         
@@ -95,8 +95,8 @@ extend plr{
 
 
 
-    function jumpKeyFilter (this:var[plr]){
-            this.walljump ();
+    function jumpKeyFilter(this:var[plr]){
+            this.walljump();
         
     }
 

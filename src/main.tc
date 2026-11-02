@@ -1,11 +1,14 @@
 
 gameevent startup{
     declare global dashcolors=['#44B7FF','#AC3232','#FF6DEF','#1141df','#ff00ff','#ffff00'];
+    call initObjects();
+    call createMenu();
     start Gloop();
 }
 
 
 playerevent join{
+    default.openDialog(global menu as dialog);
     default.setMiscellaneousAttribute(.5,attr="Scale");
     default.setMovementAttribute(125,attr="Jump strength",valueType="Percentage (Base)");
     default.setToAdventureMode();

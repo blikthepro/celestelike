@@ -1,0 +1,33 @@
+function initObjects(){
+    global objects:dict={
+        refill:{
+            name: s'<#00ff00>Refill',
+            mode:'item',
+            displayItem:item("emerald"),
+        },
+        doubleRefill:{
+            name: s'<#ff00ff>Double Refill',
+            mode:'item',
+            displayItem:item("amethyst_shard"),
+        },
+        tripleRefill:{
+            name: s'<#0000ff>Triple Refill',
+            mode:'item',
+            displayItem:item("lapis_lazuli"),
+        },
+        feather:{
+            name: s'<#ffff00>Golden Feather',
+            mode:'item',
+            displayItem:item("feather"),
+        },
+        greenBooster:{
+            name: s'<#00ffff>Green Bubble',
+            mode:'booster'
+        },
+        redBooster:{
+            name: s'<#00ffff>Red Bubble',
+            mode:'booster'
+        }
+    };
+}
+
