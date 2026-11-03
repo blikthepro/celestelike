@@ -1,0 +1,4 @@
+function constructEntity(pos:loc,object:str){
+    pos.align(align="Block center");
+    
+}

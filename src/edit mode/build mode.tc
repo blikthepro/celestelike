@@ -1,0 +1,10 @@
+function enterBuildMode{
+    var.purgeMatching("%uuid");
+    default.enableBlockModification();
+    default.setToCreativeMode();
+    default.clearInventory();
+    default.setMiscellaneousAttribute(1,attr="Scale");
+    default.setMovementAttribute(100,attr="Jump strength",valueType="Percentage (Base)");
+    default.giveItems(litem("wa", "edit_stick"));
+    declare global "%uuid_editSelect"='refil';
+}

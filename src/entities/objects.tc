@@ -5,12 +5,12 @@ function initObjects(){
             mode:'item',
             displayItem:item("emerald"),
         },
-        doubleRefill:{
+        double_refill:{
             name: s'<#ff00ff>Double Refill',
             mode:'item',
             displayItem:item("amethyst_shard"),
         },
-        tripleRefill:{
+        triple_refill:{
             name: s'<#0000ff>Triple Refill',
             mode:'item',
             displayItem:item("lapis_lazuli"),
@@ -20,12 +20,12 @@ function initObjects(){
             mode:'item',
             displayItem:item("feather"),
         },
-        greenBooster:{
+        green_booster:{
             name: s'<#00ffff>Green Bubble',
             mode:'booster'
         },
-        redBooster:{
-            name: s'<#00ffff>Red Bubble',
+        red_booster:{
+            name: s'<#ff0000>Red Bubble',
             mode:'booster'
         }
     };

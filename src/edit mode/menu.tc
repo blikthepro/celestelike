@@ -1,8 +1,8 @@
 function createMenu(){
-    global menu:dialog = dialog.create('menu',s'Select Entity', "type"="Multi Action with Exit Button");
+    global menu:dialog = dialog.create('menu',s'Select Entity', "type"="Multi Action");
     menu.setColumnCount(4);
     line k:str; line v:dict;
     for(k, v as dict of global objects as dict){
-        menu.addBodyItem(v['displayItem'] as item,v['name'] as txt);
+        menu.addButton(v['name']as txt,k,128,buttonType="ID");
     }
 }
