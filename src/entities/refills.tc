@@ -1,0 +1,19 @@
+function refill(refill:item){
+    global "%uuid".filteredRegen();
+    global "%uuid"['dashes']=refill.getTag('value') as num;
+    if (refill.getTag('value') as num==2){
+        allPlayers.playSound(csnd('celestelike:crystals.ddash'),victimEntity.location);
+    }
+    else{
+        allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location);
+    }
+    allPlayers.displayParticleEffect(par.setColor(par.setAmount(par("instant_effect"),16),refill.getTag('color') as str),victimEntity.location);
+    call refillBreak(refill);
+}
+
+function refillBreak(unbreak:item){
+    
+    victimEntity.setItem(item("glass_pane"));
+    wait(60);
+    victimEntity.setItem(unbreak);
+}

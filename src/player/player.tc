@@ -71,7 +71,7 @@ extend plr{
 
         default.setVelocity(vec.setLength(dir, num.clamp(vec.len(vec(default.velocity.x,0,default.velocity.z)),1,1000)));
 
-        allPlayers.playSound(snd2("celestelike:dash"), default.location);
+        allPlayers.playSound(csnd("celestelike:dash"), default.location);
         start this.delayedStateReset(this,10);
         start this.dashParticle(this);
         start this.dashAttack(this);

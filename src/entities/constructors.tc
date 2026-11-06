@@ -1,4 +1,30 @@
-function constructEntity(pos:loc,object:str){
+function constructPasser(pos:loc,selectedObject:str){
+    if!(default.itemIsNotOnCooldown(event.item)){
+        return;
+    }
     pos.align(align="Block center");
-    
+
+    line mode=objects[selectedObject]['mode'];
+    saved eLocs as list.append([pos,selectedObject]);
+
+
+    call '%var(mode)_constructor'(pos, objects[selectedObject]);
+    default.setItemCooldown(event.item, 5);
+}
+
+function item_constructor(pos:loc, object:dict){
+    game.setBlock(item("structure_void"),pos);
+    game.spawnItem(object['displayItem'] as item,pos,applyMotion="False");
+    lastEntity.setGravity(gravity="Disable");
+    lastEntity.setGlowing();
+    lastEntity.setMiscellaneousAttribute(2, attr="Scale");
+    lastEntity.setNameColor(color=object['glowColor']);
+    lastEntity.setPersistent(persistent="Enable");
+    allPlayers.playSound(snd("entity.experience_orb.pickup"),pos);
+}
+
+function booster_constructor(pos:loc, object:dict){
+    game.setBlock(item("structure_void"),pos);
+    game.spawnBlockDisplay(pos.shiftAllAxes(-1,-1,-1),object['displayBlock'] as item);
+    lastEntity.setDisplayScale(vec(2));
 }

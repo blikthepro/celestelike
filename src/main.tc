@@ -1,9 +1,7 @@
 
 gameevent startup{
+    wait();
     declare global dashcolors=['#44B7FF','#AC3232','#FF6DEF','#1141df','#ff00ff','#ffff00'];
-    if !(var.exists(saved eLocs)){
-        declare saved eLocs:list;
-    }
     call initObjects();
     call createMenu();
     start Gloop();
@@ -34,12 +32,24 @@ playerevent leftClick{
     
 }
 
+playerevent rightClick{
+    if(event.itemEquals(litem("wa", "edit_stick"))){
+        call constructPasser(event.blockLocation,global "%uuid_editSelect");
+    }
+}
+
 playerevent exhaustion{
     event.cancel();
 }
 
 playerevent takeDamage{
     event.cancel();
+}
+
+playerevent pickUpItem{
+    event.cancel();
+    line exec:str=event.item.getTag('trigger')as str;
+    call '%var(exec)'(event.item as item);
 }
 
 playerevent movementKeyChange{
@@ -64,7 +74,6 @@ playerevent command{
 playerevent clickDialogButton{
     if(event.clickedDialogId=='menu'){
         global "%uuid_editSelect"=event.clickedButtonId;
-        print (global "%uuid_editSelect");
     }
     
 }

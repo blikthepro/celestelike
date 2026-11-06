@@ -4,5 +4,5 @@ function createMenu(){
     line k:str; line v:dict;
     for(k, v as dict of global objects as dict){
         menu.addButton(v['name']as txt,k,128,buttonType="ID");
-    }
+    } //maybe i could make this fancier but idk
 }

@@ -24,10 +24,10 @@ extend plr{
             }
                 //sound and block fracture
                 if  (this['state']=="dashing"){
-                    allPlayers.playSound (snd2 ("celestelike:wallbounce",1,.5), p as loc);
+                    allPlayers.playSound (csnd ("celestelike:wallbounce",1,.5), p as loc);
                 }
                 else{
-                    allPlayers.playSound (snd2 ("celestelike:walljump",1,.5), p as loc);
+                    allPlayers.playSound (csnd ("celestelike:walljump",1,.5), p as loc);
                 }
                 allPlayers.playSound (snd.setVolume (snd.setPitch (game.getBlockSound (game.getBlockMaterial (p as loc, returnValue="Item"),soundType="Break Sound"),0.75), 2),p as loc);
                 allPlayers.displayBlockFracture (p as loc,num.random (1,7), overwritePrevious="True");
@@ -59,7 +59,7 @@ extend plr{
         default.launchUp (6,addToCurrentVel="False");
         start this.delayedStateReset (this,10);
         this['stamina']-=25;
-        allPlayers.playSound (snd2 ("celestelike:climbjump"),default.location);
+        allPlayers.playSound (csnd ("celestelike:climbjump"),default.location);
         allPlayers.playSound (snd.setVolume (snd.setPitch (game.getBlockSound (game.getBlockMaterial (p as loc, returnValue="Item"),soundType="Break Sound"),0.75), 2),p as loc);
         allPlayers.displayBlockFracture (p as loc,num.random (1,7), overwritePrevious="True");
         wait (10);

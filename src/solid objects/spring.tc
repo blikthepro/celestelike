@@ -10,7 +10,7 @@ function spring(pos:loc){
 
     line facing=game.getBlockData(pos,'facing');
     selected.setVelocity(launchVectors.get(facing) as vec, addToCurrentVel="False");
-    allPlayers.playSound(snd2('celestelike:blocks.spring'), pos,source="Blocks");
+    allPlayers.playSound(csnd('celestelike:blocks.spring'), pos,source="Blocks");
 
 }
 
