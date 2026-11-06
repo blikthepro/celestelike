@@ -2,6 +2,7 @@ extend plr{
     function hud (this:var[plr]){
         line dashcolor=dashcolors[this['dashes']+1];
         selected.setExperience  (this['stamina'],unit="Level Percentage");
+        selected.setExperience(this['airJumps'],unit="Level");
         if(selected.isInGameMode(gamemode="Adventure")){
             selected.sendActionBar (s'<gray>-{'+txt.parseExpression ('<%var(dashcolor)>')+this['state']+s'<reset><gray>}-');
         }

@@ -2,6 +2,11 @@
   "compilationMode": "item",
   "id": "wa",
   "items": {
+    "auto_jump": {
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:trigger\":\"jumpRefill\",\"hypercube:value\":0.0d}},\"minecraft:custom_name\":{extra:[\"auto_jump\"],italic:0b,text:\"\"}},count:1,id:\"minecraft:shulker_shell\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
+      "version": 4440
+    },
     "boom_0": {
       "data": "{components:{\"minecraft:fireworks\":{explosions:[{colors:[6719955],shape:\"small_ball\"}],flight_duration:1b}},count:1,id:\"minecraft:firework_rocket\"}",
       "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsElEQVR4Xu2SsQmAMBREbe0FCydQcDS3cAnXsHMHGxsnSR9N4EAOBFF/fsQ8uEKNuUd+siyReMhU19aF3wdDTWDYS13WpvHpytKH14mhJoBiHD2eISAuoi6AYhZA+qry4f9eQ10AjPNijwlWDNQFjDHWhUfB68RQF+DLiFHwOjGiEcAo/ieAYiT4JYxGAKP4nwCKkbNL2Ba5PYa/3yYaAWzMAq8XMuoCjNhRX0Vd4LNsLcmEGIVilpgAAAAASUVORK5CYII=",
@@ -39,6 +44,11 @@
     },
     "edit_stick": {
       "data": "{components:{\"minecraft:custom_name\":{extra:[{extra:[{extra:[{color:\"#FF0000\",text:\"t\"},{color:\"#FF3800\",text:\"h\"},{color:\"#FF7100\",text:\"e\"},{color:\"gold\",text:\" \"},{color:\"#FFE200\",text:\"s\"},{color:\"#E2FF00\",text:\"t\"},{color:\"#A9FF00\",text:\"i\"},{color:\"#71FF00\",text:\"c\"},{color:\"#38FF00\",text:\"k\"},{color:\"#00FF00\",text:\" \"},{color:\"#00FF38\",text:\"t\"},{color:\"#00FF71\",text:\"h\"},{color:\"#00FFAA\",text:\"a\"},{color:\"#00FFE2\",text:\"t\"},{color:\"#00E2FF\",text:\" \"},{color:\"#00A9FF\",text:\"e\"},{color:\"#0071FF\",text:\"d\"},{color:\"#0038FF\",text:\"i\"},{color:\"#0000FF\",text:\"t\"},{color:\"#3800FF\",text:\"s\"},{color:\"#7100FF\",text:\" \"},{color:\"#AA00FF\",text:\"t\"},{color:\"#E200FF\",text:\"h\"},{color:\"#FF00E2\",text:\"i\"},{color:\"#FF00A9\",text:\"n\"},{color:\"#FF0071\",text:\"g\"},{color:\"#FF0038\",text:\"s\"}],text:\"\"}],text:\"\"}],italic:0b,text:\"\"},\"minecraft:lore\":[{bold:0b,color:\"white\",extra:[{color:\"gold\",text:\"left click to open the menu, right click to apply\"}],italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b},{bold:0b,color:\"white\",extra:[{color:\"dark_gray\",text:\"if you are defining an area you need to right click 2 times to set each corner\"}],italic:0b,obfuscated:0b,strikethrough:0b,text:\"\",underlined:0b}]},count:1,id:\"minecraft:breeze_rod\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
+      "version": 4440
+    },
+    "jump_refill": {
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:trigger\":\"jumpRefill\",\"hypercube:value\":1.0d}},\"minecraft:custom_name\":{extra:[\"jump_refill\"],italic:0b,text:\"\"}},count:1,id:\"minecraft:diamond_sword\"}",
       "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
       "version": 4440
     },

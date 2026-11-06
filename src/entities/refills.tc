@@ -11,6 +11,17 @@ function refill(refill:item){
     call refillBreak(refill);
 }
 
+function jumpRefill(refill:item){
+    if(refill.getTag('value') as num==0){
+        global "%uuid".airJump(); 
+    }
+    else{
+        global "%uuid"['airJumps'] = refill.getTag('value') as num;
+    }
+    allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location);
+    call refillBreak(refill);
+}
+
 function refillBreak(unbreak:item){
     
     victimEntity.setItem(item("glass_pane"));

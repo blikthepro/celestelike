@@ -59,9 +59,12 @@ playerevent movementKeyChange{
 }
 playerevent jump{
     if (list.contains(default.pressedMovementKeys, 'jump')){
+        
         global "%uuid".wave();
     }
 }
+
+
 
 playerevent command{
     if(player.hasPlotPermission(permission="Developer or builder")){

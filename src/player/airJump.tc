@@ -1,0 +1,10 @@
+extend plr{
+    function airJump(this:var[plr]){
+        if(default.isGrounded()){
+            return;
+        }
+        default.setVelocity(vec(default.velocity.x,0,default.velocity.z));
+        default.launchUp(5,addToCurrentVel="True");
+        this.wave();
+    }
+}

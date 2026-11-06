@@ -2,6 +2,7 @@ type plr:{
     name:str,
     maxdashes:num,
     dashes:num,
+    airJumps:num,
     maxstamina:num,
     stamina:num,
     state:str,
@@ -19,6 +20,7 @@ extend plr{
             name:'%uuid',
             maxdashes:1,
             dashes:1,
+            airJumps:0,
             maxstamina:110,
             stamina:110,
             state:"normal",
@@ -97,7 +99,10 @@ extend plr{
 
     function jumpKeyFilter(this:var[plr]){
             this.walljump();
-        
+            if(this['airJumps']>0){
+                this['airJumps']--;
+                this.airJump();
+            }
     }
 
     

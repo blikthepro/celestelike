@@ -21,6 +21,19 @@ function initObjects(){
             displayItem:litem("wa", "triple_refill"),
             glowColor:'Dark blue'
         },
+        jump_refill:{
+            name: s'<cyan>Jump Refill',
+            mode:'item',
+            displayItem:litem("wa", "jump_refill"),
+            glowColor:'Cyan'
+        },
+        auto_jump:{
+            name: s'Auto Jump',
+            mode:'item',
+            displayItem:litem("wa", "auto_jump"),
+            glowColor:'Dark purple'
+        },
+
         feather:{
             name: s'<#ffff00>Golden Feather',
             mode:'item',

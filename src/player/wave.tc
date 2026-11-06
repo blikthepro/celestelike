@@ -1,6 +1,10 @@
 extend plr{
     function wave  (this:var[plr]){
-
+        if (default.isGrounded()){
+            if (this['refillDash']=='true' && this['dashes']<this['maxdashes']){
+                this['dashes']=this['maxdashes'];
+        }
+        }
         wait  ();
         if !  (this['state']=='dashing'){
             return;
@@ -19,7 +23,7 @@ extend plr{
             allPlayers.playSound (csnd ("celestelike:hyper"),default.location);
         }
         this['state']="hwipping";
-        this['dashes']=this['maxdashes'];
+        
         start this.waveParticle (this);
     }
 }

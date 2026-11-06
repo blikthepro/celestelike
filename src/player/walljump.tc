@@ -50,6 +50,7 @@ extend plr{
                     default.launchUp (7);
                 }
                 start this.delayedStateReset (this,5);//note: could redo this as a timer?
+                endthread;
             }
         }
     }
