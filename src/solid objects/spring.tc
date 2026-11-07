@@ -9,6 +9,13 @@ function spring(pos:loc){
     };
 
     line facing=game.getBlockData(pos,'facing');
+    line dir:vec=launchVectors as dict.get(facing) as vec;
+    if (dir as vec.y!=1){
+        dir as vec.y=0;
+    }
+    if (selected.isNearLocation(pos.shiftOnVector(vec(-dir.x,-dir.y,-dir.z)),1.5)){
+        selected.teleport(pos.shiftOnVector(dir.setLength(1.2)),keepRot="True");
+    }
     selected.setVelocity(launchVectors.get(facing) as vec, addToCurrentVel="False");
     allPlayers.playSound(csnd('celestelike:blocks.spring'), pos,source="Blocks");
 

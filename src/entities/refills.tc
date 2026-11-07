@@ -1,6 +1,8 @@
 function refill(refill:item){
     global "%uuid".filteredRegen();
-    global "%uuid"['dashes']=refill.getTag('value') as num;
+    if(global "%uuid"['dashes']<refill.getTag('value') as num){
+        global "%uuid"['dashes']=refill.getTag('value') as num;
+    }
     if (refill.getTag('value') as num==2){
         allPlayers.playSound(csnd('celestelike:crystals.ddash'),victimEntity.location);
     }

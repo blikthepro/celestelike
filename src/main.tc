@@ -2,6 +2,7 @@
 gameevent startup{
     wait();
     declare global dashcolors=['#44B7FF','#AC3232','#FF6DEF','#1141df','#ff00ff','#ffff00'];
+    declare saved eLocs:list;
     call initObjects();
     call createMenu();
     start Gloop();

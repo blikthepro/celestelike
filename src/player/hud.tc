@@ -3,11 +3,11 @@ extend plr{
         line dashcolor=dashcolors[this['dashes']+1];
         selected.setExperience  (this['stamina'],unit="Level Percentage");
         selected.setExperience(this['airJumps'],unit="Level");
-        if(selected.isInGameMode(gamemode="Adventure")){
+        if(["adventure","spectator"].contains(selected.gameMode)){
             selected.sendActionBar (s'<gray>-{'+txt.parseExpression ('<%var(dashcolor)>')+this['state']+s'<reset><gray>}-');
         }
         else{
-            selected.sendActionBar (s'<gray>-{'+s'<reset><gray>}-');
+            selected.sendActionBar (s'<gray>-{'+global "%uuid_editSelect"+s'<reset><gray>}-');
         }
     }
 }

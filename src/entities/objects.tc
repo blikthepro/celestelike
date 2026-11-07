@@ -52,7 +52,7 @@ function initObjects(){
         }
     };
 
-    for (line i of saved eLocs as list){ //works for now, no need to change it unless a later entity requires new parameters
+    for (line i of saved eLocs){ //works for now, no need to change it unless a later entity requires new parameters
         declare local ls:list =i as list; //
         line mode= objects[ls[2] as str]['mode'];
         call '%var(mode)_constructor'(ls[1] as loc, objects[ls[2] as str] as dict);

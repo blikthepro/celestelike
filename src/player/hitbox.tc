@@ -30,6 +30,9 @@ extend plr{
                 }
             }
         }
+        if (selected.isHitboxNearLocation(global boosterLocs as loc,2)){
+            
+        }
         
     }
 

@@ -6,7 +6,7 @@ extend plr{
         }
         }
         wait  ();
-        if !  (this['state']=='dashing'){
+        if !(this['state']=='dashing'){
             return;
         }
         line requiredSpeed:num=.3;

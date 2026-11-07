@@ -2,7 +2,9 @@ function createMenu(){
     global menu:dialog = dialog.create('menu',s'Select Entity', "type"="Multi Action");
     menu.setColumnCount(4);
     line k:str; line v:dict;
+    menu.addBodyText(s'Item Entities');
     for(k, v as dict of global objects as dict){
         menu.addButton(v['name']as txt,k,128,buttonType="ID");
     } //maybe i could make this fancier but idk
+    menu.addButton(s'Remove item/area','remove',buttonType="ID");
 }
