@@ -37,7 +37,7 @@ function dreamBlock(this:var[plr],rayLoc:loc){ //this is the funny dream block f
         wait;
     }
 
-    allPlayers.stopSounds(csnd('celestelike:blocks.dreamtravel'));
+    allPlayers.stopSounds(csnd('celestelike:blocks.dreamtravel'),source="Players");
     allPlayers.playSound(csnd('celestelike:blocks.dreamexit'),default.location,source="Players");
     default.setToAdventureMode();
     this.filteredRegen();
