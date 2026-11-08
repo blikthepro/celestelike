@@ -1,5 +1,6 @@
-function vectorAngle (A: vec, B: vec): num {
-    return num.acos (A.setLength (1).dot(B.setLength(1)));
+
+extend vec{
+    function angle(this:vec, compareVec:vec):num{
+        return num.acos (this.setLength (1).dot(compareVec.setLength(1)));
+    }
 }
-
-

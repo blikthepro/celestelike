@@ -18,6 +18,6 @@ function spring(pos:loc){
     }
     selected.setVelocity(launchVectors.get(facing) as vec, addToCurrentVel="False");
     allPlayers.playSound(csnd('celestelike:blocks.spring'), pos,source="Blocks");
-
+    global "%uuid".filteredRegen();
 }
 

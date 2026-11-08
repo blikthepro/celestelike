@@ -56,24 +56,30 @@ extend plr{
 
     function dash(this:var[plr]){
      //this is how you make the class method work, no other way as far as i can tell
-        if (this['state']=='dead'){
+        if (this['state']=='boosting'){
+            this["state"]='quickexit';
             return;
         }
-        if (this['dashes']<1){
+        if (this['state']=='dead'||this['dashes']<1){
             return;
         }
+        
         this['state']='dashing';
         this['dashes']--;
+        
         this['dashAngle']=default.pitch;
-
         line dir=default.direction;
         if (default.isGrounded() && this['dashAngle']>0 ){
                 dir=vec(default.direction.x,0,default.direction.z);
         }
 
         default.setVelocity(vec.setLength(dir, num.clamp(vec.len(vec(default.velocity.x,0,default.velocity.z)),1,1000)));
-
-        allPlayers.playSound(csnd("celestelike:dash"), default.location);
+        if !(default.isGrounded()){
+            this['dashAngle']=default.velocity.angle(default.velocity.setComponent(0,comp="Y"));
+        }
+  
+        
+        allPlayers.playSound(csnd("celestelike:dash"), default.location,source="Players");
         start this.delayedStateReset(this,10);
         start this.dashParticle(this);
         start this.dashAttack(this);

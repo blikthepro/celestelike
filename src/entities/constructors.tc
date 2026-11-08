@@ -2,7 +2,7 @@ function constructPasser(pos:loc,selectedObject:str){
     if!(default.itemIsNotOnCooldown(event.item)){
         return;
     }
-    pos.align(align="Block center");
+    pos=pos.align(align="Block center");
     if(selectedObject=='remove'){
         call remover(pos);
         return;
@@ -40,9 +40,12 @@ function item_constructor(pos:loc, object:dict){
 }
 
 function booster_constructor(pos:loc, object:dict){
-    declare global boosterLocs:list;
+    declare global boosterLocs:list[loc];
+    declare global boosterIds:list[str];
     boosterLocs.append(pos);
     game.setBlock(item("structure_void"),pos);
-    game.spawnBlockDisplay(pos.shiftAllAxes(-1,-1,-1),object['displayBlock'] as item);
+    game.spawnBlockDisplay(pos.shiftOnVector(vec(-1)),object['displayBlock'] as item);
+    boosterIds.append(object['entity']);
     lastEntity.setDisplayScale(vec(2));
+    lastEntity.setNameVisible(visibility="Never");
 }

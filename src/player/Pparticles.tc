@@ -4,8 +4,9 @@ extend plr{
         wait (1);
         line oldLoc=default.location;
         repeat (10){
-            allPlayers.displayParticleLine (par.setMotion (par ("trail",color='#ffffff'),default.velocity),oldLoc,default.location);
-            allPlayers.displayParticleLine (par.setMotion (par.setColor (par ("entity_effect"),dashcolors[this['dashes']+1]as str),vec (0,0,0),0),oldLoc,default.location);
+            allPlayers.displayParticleLine(par("trail",color='#ffffff',motion=default.velocity),oldLoc,default.location);
+            allPlayers.displayParticleLine(par('entity_effect',color=dashcolors[this['dashes']+1]as str,motionVariation=0),oldLoc,default.location);
+           
             oldLoc=default.location;
             wait (1);
         }

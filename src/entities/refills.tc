@@ -4,12 +4,12 @@ function refill(refill:item){
         global "%uuid"['dashes']=refill.getTag('value') as num;
     }
     if (refill.getTag('value') as num==2){
-        allPlayers.playSound(csnd('celestelike:crystals.ddash'),victimEntity.location);
+        allPlayers.playSound(csnd('celestelike:crystals.ddash'),victimEntity.location,source="Blocks");
     }
     else{
-        allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location);
+        allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location,source="Blocks");
     }
-    allPlayers.displayParticleEffect(par.setColor(par.setAmount(par("instant_effect"),16),refill.getTag('color') as str),victimEntity.location);
+    allPlayers.displayParticleEffect(par('instant_effect',amount=16,color=refill.getTag('color') as str),victimEntity.location);
     call refillBreak(refill);
 }
 
@@ -20,7 +20,7 @@ function jumpRefill(refill:item){
     else{
         global "%uuid"['airJumps'] = refill.getTag('value') as num;
     }
-    allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location);
+    allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location,source="Blocks");
     call refillBreak(refill);
 }
 

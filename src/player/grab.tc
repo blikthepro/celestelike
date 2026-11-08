@@ -19,7 +19,7 @@ extend plr{
                 }
                 else{
                     this['state']='climbing';
-                    allPlayers.playSound (snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(l as loc, returnValue="Item"),soundType="Hit Sound"),0.75), 3),l as loc);
+                    allPlayers.playSound (snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(l as loc, returnValue="Item"),soundType="Hit Sound"),0.75), 3),l as loc,source="Blocks");
                     start this.climbing (this,p as vec, targetMode="With current selection");
                     break;
                 }
@@ -48,20 +48,19 @@ extend plr{
             }
 
             if (selected.pressedMovementKeys.contains (['forward','backward','left','right'], checkMode="Has Any Value")){
-                line angle:num= vectorAngle (this.wishdir (),climbDir);
-
+                line angle = this.wishdir().angle(climbDir);
                 if (var.isInRange (angle,0,45)){
-                    selected.setVelocity (vec (selected.velocity.x,.15,selected.velocity.z), addToCurrentVel="False");
+                    selected.setVelocity (vec (selected.velocity.x*.75,.15,selected.velocity.z*.75), addToCurrentVel="False");
                     this['stamina'] as num--;
                 }
                 if (var.isInRange (angle,46,135)){
-                    if (vec.len (vec (selected.velocity.x,0,selected.velocity.z))<=.2){
+                    if (vec.len (selected.velocity.setComponent(0,comp="Y"))<=.3){
                         line sidewaysClimb:vec=vec.setLength (vec.align (this.wishdir ()),.2);
                         selected.setVelocity (vec (sidewaysClimb.x, selected.velocity.y,sidewaysClimb.z), addToCurrentVel="False");
                     }
                 }
                 if (var.isInRange (angle,136,180)){
-                    selected.setVelocity (vec (selected.velocity.x,-.15,selected.velocity.z), addToCurrentVel="False");
+                    selected.setVelocity (vec (selected.velocity.x*.75,-.15,selected.velocity.z*.75), addToCurrentVel="False");
                     this['stamina'] as num++;
                 }
 

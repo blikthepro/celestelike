@@ -6,7 +6,7 @@ function death(pos:loc,this:var[plr]){
     allPlayers.displayParticleEffect(par('trail',  duration=60,  color='#ff0000',motion=vec(0)), pos);
 
     selected.givePotionEffect(pot("invisibility",1,50),particles="None",showIcon="False");
-    allPlayers.playSound(csnd("celestelike:predeath"),pos);
+    allPlayers.playSound(csnd("celestelike:predeath"),pos,source="Players");
     selected.setFallingAttribute(0,attr="Gravity");
     selected.launchTowardLocation(pos,-20,addToCurrentVel="False",ignoreDistance="True");
     selected.faceLocation(pos);
@@ -25,10 +25,10 @@ process deathProcess(this:var[plr]){
     ];
     wait(10);
     game.spawnFirework(explosions[this['dashes']+2],selected.midpointLocation,instant="True",movement="Upwards");
-    allPlayers.playSound(csnd('celestelike:death'),selected.midpointLocation);
+    allPlayers.playSound(csnd('celestelike:death'),selected.midpointLocation,source="Players");
     wait(40);
     selected.teleport(saved "%uuid respawn");
-    allPlayers.playSound(csnd("celestelike:respawn"),selected.midpointLocation);
+    allPlayers.playSound(csnd("celestelike:respawn"),selected.midpointLocation,source="Players");
     selected.setFallingAttribute(0.08,attr="Gravity");
     global "%uuid"['state']='normal';
 }

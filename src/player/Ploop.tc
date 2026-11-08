@@ -1,4 +1,7 @@
 function Ploop(){
+    if !(selected.isInGameMode(gamemode="Adventure")){
+        return;
+    }
     global "%uuid".ticker();//tick timers
     if (player.isGrounded()){
         global "%uuid".filteredRegen();//regen if grounded

@@ -1,3 +1,41 @@
-function boost(){
+function boost(pos:loc){
+    if(global "%uuid"["state"]=='boosting'||global "%uuid"["timers"]['boost']>0){
+        return;
+    }
+    global "%uuid"["state"]='boosting';
+    global "%uuid".filteredRegen();
+    global "%uuid"["state"]='boosting'; //this is so both filteredRegen can work while keeping the state machine sane
+    line tag:str = global boosterIds.get(boosterLocs.find(pos));
+    selected.setFallingAttribute(0,attr="Gravity");
+    line sound:str = 'celestelike:pickups.'+tag+'boosterenter';
+    allPlayers.playSound(csnd(sound),pos,source="Blocks");
+    line caller:str = tag+'Boost';
     
+    start '%var(caller)'(pos,targetMode="With current selection");
+}
+
+process greenBoost(pos:loc){
+    global "%uuid"["timers"]['boost']=26;
+    repeat(20){
+        selected.launchTowardLocation(pos,addToCurrentVel="False");
+        if (global "%uuid"["state"]=='quickexit'){
+            global "%uuid"["timers"]['boost']=6;
+            break;
+        }
+        wait;
+    }
+    selected.launchForward(10);
+    selected.setFallingAttribute(0.08,attr="Gravity");
+    global "%uuid"["state"]='dashing';
+    global "%uuid"['dashAngle']=selected.pitch;
+    start global "%uuid".delayedStateReset(global "%uuid",10);
+    allPlayers.playSound(csnd('celestelike:pickups.greenboosterdash'),pos,source="Blocks");
+}
+
+process redBoost(pos:loc){
+    global "%uuid"["timers"]['boost']=26;
+    repeat(20){
+        selected.launchTowardLocation(pos,addToCurrentVel="False");
+        wait;
+    }
 }

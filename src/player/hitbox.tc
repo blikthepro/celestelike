@@ -30,8 +30,10 @@ extend plr{
                 }
             }
         }
-        if (selected.isHitboxNearLocation(global boosterLocs as loc,2)){
-            
+        for (line l of global boosterLocs){
+            if (selected.isNearLocation(l,1.5)){
+                call boost(l);
+            }
         }
         
     }

@@ -1,6 +1,30 @@
 function bumper(pos:loc,block:str){
-    pos.align(align="Block center");
-    print(pos);
-    selected.launchTowardLocation(pos,-200,addToCurrentVel="False",ignoreDistance="True");
-    //doesnt work, don't know why
+    pos=pos.align(align="Block center");
+    selected.launchTowardLocation(pos,-100,addToCurrentVel="False",ignoreDistance="True");
+    //works, don't know why
+    allPlayers.playSound(csnd('celestelike:blocks.bumper'),pos,source="Blocks");
+    global "%uuid"["state"]='dashing';
+    start global "%uuid".delayedStateReset(global "%uuid",10);
+    start bumperVisuals(pos);
+}
+
+process bumperVisuals(pos:loc){
+    line block:item=game.getBlockMaterial(pos,returnValue="Item");
+    game.setBlock(item("air"),pos);
+    game.spawnBlockDisplay(pos.shiftOnVector(vec(-.75)),item('dark_prismarine'));
+    line scale:num=1.5;
+    line translation:num=0;
+    lastEntity.setDisplayScale(vec(scale));
+    wait;
+    lastEntity.setDisplayInterpolation(20,1);
+    repeat(10){ 
+        wait;
+        scale-=.05;
+        translation+=.025;
+        lastEntity.setDisplayScale(vec(scale));
+        lastEntity.setDisplayTranslation(vec(translation));
+        
+    }
+    lastEntity.remove();
+    game.setBlock(block,pos);
 }
