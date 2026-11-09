@@ -1,0 +1,28 @@
+function feather(feather:item){
+    if (global "%uuid"['state']=='feather'){
+        global "%uuid"['timers']['feather']=65;
+        call respawnItem(feather);
+        return;
+    }
+    global "%uuid".filteredRegen();
+    global "%uuid"['state']='feather';
+    global "%uuid"['timers']['feather']=60;
+    allPlayers.playSound(csnd("celestelike:pickups.featherget"),victimEntity.location,source="Blocks");
+    default.setFallingAttribute(0,attr="Gravity");
+    repeat(5){
+        default.setVelocity(default.velocity*0.75);
+        wait;
+    }
+    default.setEquipmentItem(item("elytra"),slot="Chest");
+    default.setGliding(gliding="Enable");
+    allPlayers.playSound(csnd("celestelike:pickups.featherloop"),default.location,source="Players");
+    while(global "%uuid"['timers']['feather']>0){
+        default.launchForward(5,addToCurrentVel="False");
+        wait;
+    }
+    default.clearItems(item('elytra'));
+    default.setGliding(gliding="Disable");
+    default.setFallingAttribute(0.08,attr="Gravity");
+    allPlayers.stopSounds(csnd("celestelike:pickups.featherloop"),source="Players");
+    allPlayers.playSound(csnd("celestelike:pickups.featherend"),default.location,source="Players");
+}

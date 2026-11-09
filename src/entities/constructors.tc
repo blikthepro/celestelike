@@ -17,7 +17,6 @@ function remover(pos:loc){
     for (line ls of saved eLocs){
         if(ls as list.contains(pos)){
             saved eLocs.remove(saved elocs as list.find(ls));
-            print (saved eLocs);
             game.setBlock(item("air"),pos);
             select entitiesByCondition(entity.isNearLocation(pos,2));
             selectedEntity.remove();

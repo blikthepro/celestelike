@@ -47,6 +47,11 @@
       "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
       "version": 4440
     },
+    "feather": {
+      "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:trigger\":\"feather\"}},\"minecraft:custom_name\":{extra:[\"feather\"],italic:0b,text:\"\"}},count:1,id:\"minecraft:feather\"}",
+      "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",
+      "version": 4440
+    },
     "jump_refill": {
       "data": "{components:{\"minecraft:custom_data\":{PublicBukkitValues:{\"hypercube:trigger\":\"jumpRefill\",\"hypercube:value\":1.0d}},\"minecraft:custom_name\":{extra:[\"jump_refill\"],italic:0b,text:\"\"}},count:1,id:\"minecraft:diamond_sword\"}",
       "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGklEQVR4Xu3BAQEAAACCIP+vbkhAAQAAAO8GECAAAZ8iuPkAAAAASUVORK5CYII=",

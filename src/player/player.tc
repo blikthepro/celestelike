@@ -78,7 +78,7 @@ extend plr{
             this['dashAngle']=default.velocity.angle(default.velocity.setComponent(0,comp="Y"));
         }
   
-        
+        this['timers']['dash']=1;
         allPlayers.playSound(csnd("celestelike:dash"), default.location,source="Players");
         start this.delayedStateReset(this,10);
         start this.dashParticle(this);
@@ -89,6 +89,9 @@ extend plr{
 
     function filteredRegen(this:var[plr]){
         if (['dashing','dead'].contains(this['state'],checkMode="Has Any Value")){
+            return;
+        }
+        if (this['timers']['dash']>0){
             return;
         }
         

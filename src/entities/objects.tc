@@ -37,7 +37,7 @@ function initObjects(){
         feather:{
             name: s'<#ffff00>Golden Feather',
             mode:'item',
-            displayItem:item("feather"),
+            displayItem:litem("wa", "feather"),
             glowColor:'Gold'
         },
         green_booster:{

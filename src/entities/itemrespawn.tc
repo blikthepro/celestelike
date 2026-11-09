@@ -1,0 +1,6 @@
+function respawnItem(unbreak:item){
+    
+    victimEntity.setItem(item("glass_pane"));
+    wait(60);
+    victimEntity.setItem(unbreak);
+}

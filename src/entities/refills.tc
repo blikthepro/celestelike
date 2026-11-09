@@ -10,7 +10,7 @@ function refill(refill:item){
         allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location,source="Blocks");
     }
     allPlayers.displayParticleEffect(par('instant_effect',amount=16,color=refill.getTag('color') as str),victimEntity.location);
-    call refillBreak(refill);
+    call respawnItem(refill);
 }
 
 function jumpRefill(refill:item){
@@ -21,12 +21,6 @@ function jumpRefill(refill:item){
         global "%uuid"['airJumps'] = refill.getTag('value') as num;
     }
     allPlayers.playSound(csnd('celestelike:crystals.dash'),victimEntity.location,source="Blocks");
-    call refillBreak(refill);
+    call respawnItem(refill);
 }
 
-function refillBreak(unbreak:item){
-    
-    victimEntity.setItem(item("glass_pane"));
-    wait(60);
-    victimEntity.setItem(unbreak);
-}
