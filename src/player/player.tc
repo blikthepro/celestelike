@@ -101,7 +101,10 @@ extend plr{
         if (this['refillStam']=='true' && this['stamina']<this['maxstamina']){
                 this['stamina']=this['maxstamina'];
         }
-        this['state']='normal';
+        if!(['boosting','feather','dreaming'].contains(this['state'])){
+            this['state']='normal';
+        }
+        
     }
 
 

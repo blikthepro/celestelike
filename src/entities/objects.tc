@@ -44,13 +44,15 @@ function initObjects(){
             name: s'<#00ffff>Green Bubble',
             mode:'booster',
             entity:'green',
-            displayBlock:item("cyan_stained_glass")
+            displayBlock:item("cyan_stained_glass"),
+            glowColor:'Dark aqua'
         },
         red_booster:{
             name: s'<#ff0000>Red Bubble',
             mode:'booster',
             entity:'red',
-            displayBlock:item("red_stained_glass")
+            displayBlock:item("red_stained_glass"),
+            glowColor:'Red'
         }
     };
 

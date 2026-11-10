@@ -45,6 +45,8 @@ function booster_constructor(pos:loc, object:dict){
     game.setBlock(item("structure_void"),pos);
     game.spawnBlockDisplay(pos.shiftOnVector(vec(-1)),object['displayBlock'] as item);
     boosterIds.append(object['entity']);
+    lastEntity.setGlowing();
+    lastEntity.setNameColor(color=object['glowColor']);
     lastEntity.setDisplayScale(vec(2));
     lastEntity.setNameVisible(visibility="Never");
 }

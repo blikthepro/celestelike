@@ -19,17 +19,22 @@ function feather(feather:item){
     default.setEquipmentItem(item("elytra"),slot="Chest");
     default.setGliding(gliding="Enable");
     allPlayers.playSound(csnd("celestelike:pickups.featherloop"),default.location,source="Players");
-    default.givePotionEffect(pot("glowing",0,featherTimer));
+    allPlayers.displayParticleEffect(par('tinted_leaves',amount=16,color='#FFAA00',spreadHoriz=1,spreadVert=1),default.location);
+    default.givePotionEffect(pot("glowing",0,featherTimer),particles="None",showIcon="False");
     default.setNameColor(color="Gold");
+
+
     while(global "%uuid"['timers']['feather']>0){
         default.launchForward(5,addToCurrentVel="False");
         default.setBossBar(s'<gold>feather',global "%uuid"['timers']['feather'],featherTimer,color="Yellow",style="6 segments");
+        allPlayers.displayParticleEffect(par('tinted_leaves',amount=4,color='#FFAA00',spreadHoriz=0.5,spreadVert=0.5),default.location);
         if (global "%uuid"["state"]=='quickexit'){
             global "%uuid".dash();
             break;
         }
         wait;
     }
+    global "%uuid"['state']='normal';
     default.removeBossBar();
     default.clearInventory();
     default.setGliding(gliding="Disable");

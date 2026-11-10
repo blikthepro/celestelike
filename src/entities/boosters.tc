@@ -15,8 +15,8 @@ function boost(pos:loc){
 }
 
 process greenBoost(pos:loc){
-    global "%uuid"["timers"]['boost']=26;
-    repeat(20){
+    global "%uuid"["timers"]['boost']=16;
+    repeat(10){
         selected.launchTowardLocation(pos,addToCurrentVel="False");
         if (global "%uuid"["state"]=='quickexit'){
             global "%uuid"["timers"]['boost']=6;
@@ -24,6 +24,7 @@ process greenBoost(pos:loc){
         }
         wait;
     }
+    allPlayers.displayParticleSpiral(par("dripping_dripstone_water"),selected.midpointLocation.setDirection(selected.direction),3,1.5);
     selected.launchForward(10);
     selected.setFallingAttribute(0.08,attr="Gravity");
     global "%uuid"["state"]='dashing';
@@ -33,10 +34,21 @@ process greenBoost(pos:loc){
 }
 
 process redBoost(pos:loc){
-    global "%uuid"["timers"]['boost']=26;
-    repeat(20){
+    global "%uuid"["timers"]['boost']=16;
+    repeat(10){
         selected.launchTowardLocation(pos,addToCurrentVel="False");
         wait;
     }
-    
+    allPlayers.playSound(csnd('celestelike:pickups.redboosterdash',1,0.5),selected.location,source="Players");
+    allPlayers.playSound(csnd('celestelike:pickups.redboostermoveloop',0.85,0.5),selected.location,source="Players");
+    line launchDIr:vec=selected.eyeLocation.getDirection();
+    while(game.blockEquals(game.raycast(selected.eyeLocation,1),item('air'))){
+        selected.setVelocity(launchDIr);
+        allPlayers.displayParticleSpiral(par("dripping_lava"),selected.midpointLocation.setDirection(launchDIr),3,1.5);
+        wait;
+    }
+    allPlayers.stopSounds(csnd("celestelike:pickups.redboostermoveloop"),source="Players");
+    allPlayers.playSound(csnd('celestelike:pickups.redboosterend',1,0.5),selected.location,source="Players");
+    selected.setFallingAttribute(0.08,attr="Gravity");
+    global "%uuid"["state"]='normal';
 }
