@@ -38,4 +38,5 @@ process redBoost(pos:loc){
         selected.launchTowardLocation(pos,addToCurrentVel="False");
         wait;
     }
+    
 }

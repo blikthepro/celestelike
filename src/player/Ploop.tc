@@ -4,6 +4,7 @@ function Ploop(){
     }
     global "%uuid".ticker();//tick timers
     if (player.isGrounded()){
+        
         global "%uuid".filteredRegen();//regen if grounded
         global "%uuid"['airJumps']=0;
     }

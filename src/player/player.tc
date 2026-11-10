@@ -56,11 +56,11 @@ extend plr{
 
     function dash(this:var[plr]){
      //this is how you make the class method work, no other way as far as i can tell
-        if (this['state']=='boosting'){
+        if (['feather','boosting'].contains(this['state'])){
             this["state"]='quickexit';
             return;
         }
-        if (this['state']=='dead'||this['dashes']<1){
+        if (this['state']=='dead'||this['dashes']<1||this['timers']['dash']>0){
             return;
         }
         
@@ -78,7 +78,7 @@ extend plr{
             this['dashAngle']=default.velocity.angle(default.velocity.setComponent(0,comp="Y"));
         }
   
-        this['timers']['dash']=1;
+        this['timers']['dash']=3;
         allPlayers.playSound(csnd("celestelike:dash"), default.location,source="Players");
         start this.delayedStateReset(this,10);
         start this.dashParticle(this);
