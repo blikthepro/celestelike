@@ -23,7 +23,7 @@ extend plr{
             default.setVelocity((vec(default.velocity.x,.15,default.velocity.z) + default.direction.setComponent(0,comp="Y"))*1.8,addToCurrentVel="False");
             allPlayers.playSound(csnd("celestelike:hyper"),default.location,source="Players");
         }
-        this['state']="hwipping";
+        this.setState("hwipping");
         
         start this.waveParticle (this);
     }

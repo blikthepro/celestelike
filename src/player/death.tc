@@ -11,7 +11,7 @@ function death(pos:loc,this:var[plr]){
     selected.launchTowardLocation(pos,-20,addToCurrentVel="False",ignoreDistance="True");
     selected.faceLocation(pos);
     selected.launchUp(2);
-    global "%uuid"['state']='dead';
+    global "%uuid".setState('dead');
     start deathProcess(this,targetMode="With current selection");
 }
 process deathProcess(this:var[plr]){
@@ -30,5 +30,5 @@ process deathProcess(this:var[plr]){
     selected.teleport(saved "%uuid respawn");
     allPlayers.playSound(csnd("celestelike:respawn"),selected.midpointLocation,source="Players");
     selected.setFallingAttribute(0.08,attr="Gravity");
-    global "%uuid"['state']='normal';
+    global "%uuid".setState('normal');
 }

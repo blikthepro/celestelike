@@ -39,7 +39,7 @@ extend plr{
                     num.clamp (
                         default.velocity.y,0,0.4),
                     default.velocity.z));
-                this['state']='walljump';
+                this.setState('walljump');
                         //this gives you the impulse based on your input
                 if  (list.contains (default.pressedMovementKeys, ['forward','backward','left','right'])){
                     default.launchTowardLocation (p as loc,-40, ignoreDistance="True");
@@ -56,7 +56,7 @@ extend plr{
     }
     //its here because idfk its a walljump technically
     function climbJump (this:var[plr],p:loc){
-        this['state']='climbjumping';
+        this.setState('climbjumping');
         default.launchUp (6,addToCurrentVel="False");
         start this.delayedStateReset (this,10);
         this['stamina']-=25;

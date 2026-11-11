@@ -46,25 +46,29 @@ extend plr{
         }
     }
 
+    function setState(this:var[plr],state:str){
+        this['state']=state;
+    }
+
     process delayedStateReset(this:var[plr],time:num){
         line temp= this['state'];
         wait(time);
         if (this['state']==temp){
-            this['state']='normal';
+            this.setState('normal');
         }
     }
 
     function dash(this:var[plr]){
      //this is how you make the class method work, no other way as far as i can tell
         if (['feather','boosting'].contains(this['state'])){
-            this["state"]='quickexit';
+            this.setState('quickexit');
             return;
         }
         if (this['state']=='dead'||this['dashes']<1||this['timers']['dash']>0){
             return;
         }
         
-        this['state']='dashing';
+        this.setState('dashing');
         this['dashes']--;
         
         this['dashAngle']=default.pitch;
@@ -102,7 +106,7 @@ extend plr{
                 this['stamina']=this['maxstamina'];
         }
         if!(['boosting','feather','dreaming'].contains(this['state'])){
-            this['state']='normal';
+            this.setState('normal');
         }
         
     }

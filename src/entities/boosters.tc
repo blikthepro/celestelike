@@ -1,10 +1,10 @@
 function boost(pos:loc){
-    if(global "%uuid"["state"]=='boosting'||global "%uuid"["timers"]['boost']>0){
+    if(global "%uuid"['state']=='boosting'||global "%uuid"["timers"]['boost']>0){
         return;
     }
-    global "%uuid"["state"]='boosting';
+    global "%uuid".setState('boosting');
     global "%uuid".filteredRegen();
-    global "%uuid"["state"]='boosting'; //this is so both filteredRegen can work while keeping the state machine sane
+    global "%uuid".setState('boosting'); //this is so both filteredRegen can work while keeping the state machine sane
     line tag:str = global boosterIds.get(boosterLocs.find(pos));
     selected.setFallingAttribute(0,attr="Gravity");
     line sound:str = 'celestelike:pickups.'+tag+'boosterenter';
@@ -18,7 +18,7 @@ process greenBoost(pos:loc){
     global "%uuid"["timers"]['boost']=16;
     repeat(10){
         selected.launchTowardLocation(pos,addToCurrentVel="False");
-        if (global "%uuid"["state"]=='quickexit'){
+        if (global "%uuid"['state']=='quickexit'){
             global "%uuid"["timers"]['boost']=6;
             break;
         }
@@ -27,7 +27,7 @@ process greenBoost(pos:loc){
     allPlayers.displayParticleSpiral(par("dripping_dripstone_water"),selected.midpointLocation.setDirection(selected.direction),3,1.5);
     selected.launchForward(10);
     selected.setFallingAttribute(0.08,attr="Gravity");
-    global "%uuid"["state"]='dashing';
+    global "%uuid".setState('dashing');
     global "%uuid"['dashAngle']=selected.pitch;
     start global "%uuid".delayedStateReset(global "%uuid",10);
     allPlayers.playSound(csnd('celestelike:pickups.greenboosterdash'),pos,source="Blocks");
@@ -42,7 +42,7 @@ process redBoost(pos:loc){
     allPlayers.playSound(csnd('celestelike:pickups.redboosterdash',1,0.5),selected.location,source="Players");
     allPlayers.playSound(csnd('celestelike:pickups.redboostermoveloop',0.85,0.5),selected.location,source="Players");
     line launchDIr:vec=selected.eyeLocation.getDirection();
-    while(game.blockEquals(game.raycast(selected.eyeLocation,1),item('air'))){
+    while(game.blockEquals(game.raycast(selected.eyeLocation.setDirection(selected.velocity),1),item('air'))){
         selected.setVelocity(launchDIr);
         allPlayers.displayParticleSpiral(par("dripping_lava"),selected.midpointLocation.setDirection(launchDIr),3,1.5);
         wait;
@@ -50,5 +50,5 @@ process redBoost(pos:loc){
     allPlayers.stopSounds(csnd("celestelike:pickups.redboostermoveloop"),source="Players");
     allPlayers.playSound(csnd('celestelike:pickups.redboosterend',1,0.5),selected.location,source="Players");
     selected.setFallingAttribute(0.08,attr="Gravity");
-    global "%uuid"["state"]='normal';
+    global "%uuid".setState('normal');
 }

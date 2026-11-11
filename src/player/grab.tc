@@ -18,7 +18,7 @@ extend plr{
                     continue;
                 }
                 else{
-                    this['state']='climbing';
+                    this.setState('climbing');
                     allPlayers.playSound (snd.setVolume(snd.setPitch(game.getBlockSound(game.getBlockMaterial(l as loc, returnValue="Item"),soundType="Hit Sound"),0.75), 3),l as loc,source="Blocks");
                     start this.climbing (this,p as vec, targetMode="With current selection");
                     break;
@@ -32,7 +32,7 @@ extend plr{
         selected.setFallingAttribute (0,attr="Gravity");
         while  (this['stamina']>0){
             if  (!selected.isSneaking ()){
-                this['state']='normal';
+                this.setState('normal');
 
                 break;
             }
@@ -75,7 +75,7 @@ extend plr{
         wait ();
         }
         if  (this['stamina']==0){
-            this['state']='exhausted';
+            this.setState('exhausted');
         }
         selected.setFallingAttribute (0.08,attr="Gravity");
     }

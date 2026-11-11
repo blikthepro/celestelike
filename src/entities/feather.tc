@@ -6,7 +6,7 @@ function feather(feather:item){
         return;
     }
     global "%uuid".filteredRegen();
-    global "%uuid"['state']='feather';
+    global "%uuid".setState('feather');
     global "%uuid"['timers']['feather']=featherTimer+5;
     allPlayers.playSound(csnd("celestelike:pickups.featherget"),victimEntity.location,source="Blocks");
     default.setFallingAttribute(0,attr="Gravity");
@@ -28,13 +28,13 @@ function feather(feather:item){
         default.launchForward(5,addToCurrentVel="False");
         default.setBossBar(s'<gold>feather',global "%uuid"['timers']['feather'],featherTimer,color="Yellow",style="6 segments");
         allPlayers.displayParticleEffect(par('tinted_leaves',amount=4,color='#FFAA00',spreadHoriz=0.5,spreadVert=0.5),default.location);
-        if (global "%uuid"["state"]=='quickexit'){
+        if (global "%uuid"['state']=='quickexit'){
             global "%uuid".dash();
             break;
         }
         wait;
     }
-    global "%uuid"['state']='normal';
+    global "%uuid".setState('normal');
     default.removeBossBar();
     default.clearInventory();
     default.setGliding(gliding="Disable");

@@ -3,7 +3,7 @@ function bumper(pos:loc,block:str){
     selected.launchTowardLocation(pos,-100,addToCurrentVel="False",ignoreDistance="True");
     //works, don't know why
     allPlayers.playSound(csnd('celestelike:blocks.bumper'),pos,source="Blocks");
-    global "%uuid"["state"]='dashing';
+    global "%uuid".setState('dashing');
     start global "%uuid".delayedStateReset(global "%uuid",10);
     start bumperVisuals(pos);
 }
