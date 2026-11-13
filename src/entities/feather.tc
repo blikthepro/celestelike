@@ -13,7 +13,7 @@ function feather(feather:item){
 
     repeat(5){
         default.setVelocity(default.velocity*0.75);
-        default.setBossBar(s'<gold>feather',global "%uuid"['timers']['feather'],featherTimer,color="Yellow",style="6 segments");
+        default.setBossBar(s' ',global "%uuid"['timers']['feather'],featherTimer,color="Yellow",style="6 segments");
         wait;
     }
     default.setEquipmentItem(item("elytra"),slot="Chest");
@@ -26,7 +26,7 @@ function feather(feather:item){
 
     while(global "%uuid"['timers']['feather']>0){
         default.launchForward(5,addToCurrentVel="False");
-        default.setBossBar(s'<gold>feather',global "%uuid"['timers']['feather'],featherTimer,color="Yellow",style="6 segments");
+        default.setBossBar(s' ',global "%uuid"['timers']['feather'],featherTimer,color="Yellow",style="6 segments");
         allPlayers.displayParticleEffect(par('tinted_leaves',amount=4,color='#FFAA00',spreadHoriz=0.5,spreadVert=0.5),default.location);
         if (global "%uuid"['state']=='quickexit'){
             global "%uuid".dash();

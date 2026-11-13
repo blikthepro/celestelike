@@ -1,4 +1,9 @@
 function constructPasser(pos:loc,selectedObject:str){
+    if(global "%uuid_editStage">0){
+        line caller:str=selectedObject+'_stage_'+global "%uuid_editStage";
+        call '%var(caller)'(pos);
+        return;
+    }
     if!(default.itemIsNotOnCooldown(event.item)){
         return;
     }
@@ -8,7 +13,9 @@ function constructPasser(pos:loc,selectedObject:str){
         return;
     }
     line mode=objects[selectedObject]['mode'];
-    saved eLocs.append([pos,selectedObject]);
+    if!(mode=='spikes'){
+        saved eLocs.append([pos,selectedObject]);
+    }
     call '%var(mode)_constructor'(pos, objects[selectedObject]);
     default.setItemCooldown(event.item, 5);
 }

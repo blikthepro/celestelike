@@ -1,0 +1,35 @@
+function spikes_constructor(pos:loc){
+    declare global spikes_corner1:loc=pos;
+    default.sendMessage(s'set the second corner');
+    global "%uuid_editStage"++;
+}
+
+function spikes_stage_1(pos:loc){
+    declare global spikes_corner2:loc=pos;
+    default.sendMessage(s'face the direction you want the spikes to face, and right click one last time');
+    global "%uuid_editStage"++;
+}
+
+function spikes_stage_2{    
+    
+
+    line face:dict[str]={
+        north:'wall',
+        south:'wall',
+        east:'wall',
+        west:'wall',
+        up:'floor',
+        down:'ceiling'
+    };
+    line dir:str=vec.getDirectionName(default.direction);
+
+    line data:str='face='+face[dir]+',facing=';
+    if(['up','down'].contains(dir)){
+        dir='west';
+    }
+    data+=dir;
+
+    game.setRegion(item("stone_button"),spikes_corner1,spikes_corner2,data);
+    var.purgeMatching('spikes_corner1','spikes_corner2');
+    global "%uuid_editStage"=0;
+}

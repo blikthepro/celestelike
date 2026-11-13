@@ -79,6 +79,7 @@ playerevent command{
 playerevent clickDialogButton{
     if(event.clickedDialogId=='menu'){
         global "%uuid_editSelect"=event.clickedButtonId;
+        global "%uuid_editStage"=0;
     }
     
 }

@@ -8,12 +8,25 @@ extend plr{
 
         ];
 //the format is ['key',timer value, blocks]
-        
 
+        
         for (line v of boxPoints){
-            line pos:loc=loc.shiftOnVector (selected.midpointLocation,  v as vec);
+            if(this['state']=='dead'){
+                    break;
+                }
+            line pos:loc=loc.shiftOnVector(selected.midpointLocation, v as vec);
+            
             //note: find a way to have the code below a toggle that's not ass 
-            //allPlayers.displayParticleEffect(par('trail',  duration=1,  color='#fc7812'), loc.shiftOnVector(selected.midpointLocation, v as vec));
+            //allPlayers.displayParticleEffect(par('trail',  duration=2,  color='#fc7812',motion=vec(0)), loc.shiftOnVector(selected.midpointLocation, v as vec));
+        for (line i of adjacent(selected.midpointLocation,pattern="Cube (26 blocks)",includeOrigin="True")){
+            if(game.getBlockMaterial(i,returnValue="Item")==item("stone_button")){
+                this.accurateSpikes(pos,i);
+            }
+        }
+            
+                
+            
+
             if (game.locationIsInBlock (pos)){
                 for (line ls of nest){
                     line block:str=game.getBlockMaterial (pos , returnValue= "Block ID (oak_log)");
@@ -38,6 +51,52 @@ extend plr{
         
     }
 
+    function accurateSpikes(this:var[plr],pos:loc,i:loc){
+        
+        line floorHitboxes:dict[list[vec]]={
+            floor:[vec(-.5,-1.5,-.5),vec(.5,-.3,.5),],
+            ceiling:[vec(-.5,1.5,-.5),vec(.5,.3,.5)],
+        };
+        line wallHitboxes:dict[list[vec]]={
 
+            north:[vec(-.5,-.5,1.5),vec(.5,.5,.3)],
+            south:[vec(-.5,-.5,-1.5),vec(.5,.5,-.3)],
+            east:[vec(-1.5,-.5,-.5),vec(-.3,.5,.5)],
+            west:[vec(1.5,-.5,-.5),vec(.3,.5,.5)],
+        };
+
+        line centerPos:loc=i.align(align="Block center");
+        
+        line offsets:list[vec];
+        if(game.getBlockData(centerPos,'face')=='wall'){
+            offsets=wallHitboxes[game.getBlockData(centerPos,'facing')];
+        }
+        else{
+            offsets=floorHitboxes[game.getBlockData(centerPos,'face')];
+        }
+        line corner1:loc=centerPos.shiftOnVector(offsets[1]);
+        line corner2:loc=centerPos.shiftOnVector(offsets[2]);
+        allPlayers.displayParticleCuboid(par("trail",motion=vec(0),duration=2,color='#00ff00'),corner1,corner2);
+
+        if(var.isInRange(pos,corner1,corner2)){
+            line facing:str=game.getBlockData(centerPos,'facing');
+            if(game.getBlockData(centerPos,'face')=='floor'){
+                facing='up';
+            }
+            else if(game.getBlockData(centerPos,'face')=='ceiling'){
+                facing='down';
+            }
+            if!(vec.getDirectionName(selected.velocity)==facing){
+                allPlayers.displayParticleCuboid(par("trail",motion=vec(0),duration=60),corner1,corner2);
+                call death(pos,this);
+            }
+        }
+        
+        
+        
+
+    }
 }
+
+
 

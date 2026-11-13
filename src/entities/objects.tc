@@ -53,6 +53,10 @@ function initObjects(){
             entity:'red',
             displayBlock:item("red_stained_glass"),
             glowColor:'Red'
+        },
+        spikes:{
+            name:s'Spike Surface',
+            mode:'spikes'
         }
     };
 

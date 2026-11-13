@@ -7,4 +7,5 @@ function enterBuildMode{
     default.setMovementAttribute(100,attr="Jump strength",valueType="Percentage (Base)");
     default.giveItems(litem("wa", "edit_stick"));
     declare global "%uuid_editSelect"='refill'; //this just makes you not a player and gives you the stick, idk what to say
+    declare global "%uuid_editStage"=0;
 }
